@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Hide any v0 attribution or watermarks */
+[data-v0-attribution],
+[data-attribution],
+.v0-attribution,
+.attribution,
+[class*="attribution"],
+[id*="attribution"],
+[data-v0-t],
+[data-v0-chat],
+[class*="v0-"],
+[id*="v0-"],
+iframe[src*="v0.dev"],
+iframe[src*="vercel.com"],
+a[href*="v0.dev"],
+a[href*="chat"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Prevent any popups or overlays */
+[role="dialog"][aria-label*="v0"],
+[role="dialog"][aria-label*="chat"],
+.modal[data-v0],
+.popup[data-v0],
+.overlay[data-v0] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+/* Enhanced dragon-themed animations */
+@keyframes dragon-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.3);
+  }
+}
+
+.dragon-glow {
+  animation: dragon-glow 3s ease-in-out infinite;
+}
+
+/* Enhanced blue gradient backgrounds */
+.bg-dragon-gradient {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+}
+
+.text-dragon-gradient {
+  background: linear-gradient(135deg, #00d4ff, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced scrollbar with dragon blue theme */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00d4ff, #3b82f6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #0ea5e9, #2563eb);
+}

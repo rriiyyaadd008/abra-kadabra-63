@@ -1,0 +1,21 @@
+{
+  "name": "Astroz - Advanced Discord Bot",
+  "short_name": "Astroz",
+  "description": "Elevate your Discord server with cutting-edge features and robust security.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "/astroz-logo.gif",
+      "sizes": "192x192",
+      "type": "image/gif"
+    },
+    {
+      "src": "/astroz-logo.gif",
+      "sizes": "512x512",
+      "type": "image/gif"
+    }
+  ]
+}
