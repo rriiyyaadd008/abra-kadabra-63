@@ -275,29 +275,54 @@ export default function Home() {
           <div
             className={`mt-20 transition-all duration-1000 delay-900 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <div className="relative group max-w-md mx-auto">
+            <div className="relative group max-w-4xl mx-auto">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
 
               <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 text-center">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-6">
-                  Creator of Astroz
+                  Our Team
                 </h3>
 
-                <div className="relative group mb-6">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                  <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-cyan-500/50">
-                    <Image
-                      src="/creator-riyad.webp"
-                      alt="RIYAD - Creator of Astroz"
-                      fill
-                      className="object-cover"
-                      sizes="128px"
-                    />
+                <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+                  {/* RIYAD's Card */}
+                  <div className="flex flex-col items-center">
+                    <div className="relative group mb-4">
+                      <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                      <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-cyan-500/50">
+                        <Image
+                          src="/creator-riyad.webp"
+                          alt="RIYAD - Creator of Astroz"
+                          fill
+                          className="object-cover"
+                          sizes="128px"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                      RIYAD
+                    </div>
+                    <p className="text-gray-400 text-sm mt-1">Bot Owner & Head Developer</p>
                   </div>
-                </div>
 
-                <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  RIYAD
+                  {/* !! Majestic's Card */}
+                  <div className="flex flex-col items-center">
+                    <div className="relative group mb-4">
+                      <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                      <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-cyan-500/50">
+                        <Image
+                          src="/owner-majestic.png"
+                          alt="!! Majestic - Bot Owner"
+                          fill
+                          className="object-cover"
+                          sizes="128px"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                      !! Majestic
+                    </div>
+                    <p className="text-gray-400 text-sm mt-1">Bot Owner</p>
+                  </div>
                 </div>
               </div>
             </div>
