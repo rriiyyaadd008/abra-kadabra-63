@@ -10,22 +10,21 @@ export default function AuthError() {
   const error = searchParams.get("error")
 
   return (
-    <div className="container flex items-center justify-center min-h-screen">
-      <Card className="w-full max-w-md">
+    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+      <Card className="w-[400px]">
         <CardHeader>
           <CardTitle>Authentication Error</CardTitle>
           <CardDescription>There was a problem signing you in.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {error && <div className="p-3 rounded-md bg-destructive/10 text-destructive text-sm">Error: {error}</div>}
-          <div className="flex flex-col gap-2">
-            <Button asChild>
-              <Link href="/">Go Home</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/auth/signin">Try Again</Link>
-            </Button>
-          </div>
+          {error && (
+            <div className="rounded-md bg-destructive/15 p-3">
+              <p className="text-sm text-destructive">Error: {error}</p>
+            </div>
+          )}
+          <Button asChild className="w-full">
+            <Link href="/">Return to Home</Link>
+          </Button>
         </CardContent>
       </Card>
     </div>

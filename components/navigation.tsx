@@ -27,11 +27,13 @@ export default function Navigation() {
       {/* Top Auth Bar */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
-            <span className="font-bold text-lg">Astroz</span>
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="flex items-center space-x-2">
+              <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
+              <span className="font-bold">Astroz</span>
+            </Link>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center space-x-4">
             <ThemeToggle />
             <AuthButton />
           </div>

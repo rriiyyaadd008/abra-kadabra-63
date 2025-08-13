@@ -12,9 +12,9 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account, profile }) {
       if (account && profile) {
         token.id = profile.id
-        token.username = (profile as any).username
-        token.discriminator = (profile as any).discriminator
-        token.avatar = (profile as any).avatar
+        token.username = profile.username
+        token.discriminator = profile.discriminator
+        token.avatar = profile.avatar
       }
       return token
     },

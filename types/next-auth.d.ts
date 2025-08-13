@@ -11,19 +11,19 @@ declare module "next-auth" {
     }
   }
 
-  interface User {
+  interface Profile {
     id: string
-    username?: string
-    discriminator?: string
-    avatar?: string
+    username: string
+    discriminator: string
+    avatar: string
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
-    id?: string
-    username?: string
-    discriminator?: string
-    avatar?: string
+    id: string
+    username: string
+    discriminator: string
+    avatar: string
   }
 }

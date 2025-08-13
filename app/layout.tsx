@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Astroz - Advanced Discord Bot",
-  description: "The most advanced Discord bot with powerful moderation, music, and utility features.",
+  description: "The most advanced Discord bot with 1.1K+ servers and 3.8M+ users",
     generator: 'v0.app'
 }
 
@@ -23,11 +23,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <div className="min-h-screen bg-background">
+          <div className="relative flex min-h-screen flex-col">
             <Navigation />
-            <main>{children}</main>
-            <Toaster />
+            <main className="flex-1">{children}</main>
           </div>
+          <Toaster />
         </Providers>
       </body>
     </html>
