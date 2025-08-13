@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Navigation from "@/components/navigation"
-import { FileText, CheckCircle, XCircle, Copyright, Ban, RefreshCw, Mail } from "lucide-react"
+import { FileText, Scale, AlertCircle, CheckCircle, XCircle, Info } from "lucide-react"
 
 export default function Terms() {
   const [mounted, setMounted] = useState(false)
@@ -11,63 +11,10 @@ export default function Terms() {
     setMounted(true)
   }, [])
 
-  const sections = [
-    {
-      icon: CheckCircle,
-      title: "Acceptance of Terms",
-      content:
-        "By using our Discord bot, you agree to be bound by these Terms of Service, including any additional terms and conditions and policies referenced herein.",
-      color: "from-green-400 to-emerald-600",
-    },
-    {
-      icon: FileText,
-      title: "Use of Services",
-      content:
-        "You agree to use the bot's services only for lawful purposes and in a manner consistent with the rights and obligations of other users and third parties.",
-      color: "from-blue-400 to-cyan-600",
-    },
-    {
-      icon: XCircle,
-      title: "Prohibited Activities",
-      content:
-        "You may not engage in any activity that disrupts, interferes with, or harms the functioning of the bot or its users, including but not limited to hacking, spamming, or distributing malware.",
-      color: "from-red-400 to-pink-600",
-    },
-    {
-      icon: Copyright,
-      title: "Intellectual Property",
-      content:
-        "All content, features, and functionality provided by the bot are owned by us and are protected by copyright, trademark, and other intellectual property laws.",
-      color: "from-purple-400 to-indigo-600",
-    },
-    {
-      icon: Ban,
-      title: "Termination",
-      content:
-        "We reserve the right to suspend or terminate your access to the bot's services at any time and for any reason without prior notice or liability.",
-      color: "from-orange-400 to-red-600",
-    },
-    {
-      icon: RefreshCw,
-      title: "Changes to Terms",
-      content:
-        "We may update these Terms of Service from time to time. Your continued use of the bot after any such changes constitutes your acceptance of the new Terms.",
-      color: "from-teal-400 to-cyan-600",
-    },
-    {
-      icon: Mail,
-      title: "Contact Us",
-      content:
-        "If you have any questions or concerns about these Terms of Service, please contact us via our support system.",
-      color: "from-pink-400 to-rose-600",
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden pb-20">
-      {/* Animated Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Floating Particles */}
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
@@ -80,113 +27,214 @@ export default function Terms() {
             }}
           />
         ))}
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 px-4 py-12">
         {/* Header */}
         <div className="text-center mb-16">
           <div
             className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
+            <div className="relative group inline-block mb-8">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+              <FileText className="relative w-16 h-16 text-cyan-400 mx-auto" />
+            </div>
+
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
               Terms of Service
             </h1>
             <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
-            <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-              Please read these terms carefully before using Astroz
+            <p className="text-xl text-gray-300 mt-6 max-w-2xl mx-auto">
+              Please read these terms carefully before using Astroz services.
             </p>
           </div>
         </div>
 
-        {/* Terms Sections */}
+        {/* Terms Content */}
         <div className="max-w-4xl mx-auto space-y-8">
-          {sections.map((section, index) => {
-            const IconComponent = section.icon
-            return (
-              <div
-                key={section.title}
-                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${
-                  mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <div className="relative group">
-                  <div
-                    className={`absolute -inset-1 bg-gradient-to-r ${section.color} rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-all duration-300`}
-                  />
+          {/* Acceptance of Terms */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
 
-                  <div className="relative bg-slate-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${section.color} mt-1`}
-                      >
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-
-                      <div className="flex-1">
-                        <h3
-                          className={`text-2xl font-bold bg-gradient-to-r ${section.color} bg-clip-text text-transparent mb-4`}
-                        >
-                          {section.title}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed text-lg">{section.content}</p>
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <Scale className="w-8 h-8 text-blue-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    Acceptance of Terms
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    By using Astroz, you agree to be bound by these Terms of Service. If you do not agree to these
+                    terms, please do not use our services.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      You must be at least 13 years old to use Discord and Astroz
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      You must have permission to manage the Discord server where you add Astroz
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-1 mr-3 flex-shrink-0" />
+                      You agree to use Astroz in compliance with Discord's Terms of Service
+                    </li>
+                  </ul>
                 </div>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          </div>
 
-        {/* Important Notice */}
-        <div
-          className={`mt-16 transition-all duration-1000 delay-900 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <div className="relative group max-w-4xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+          {/* Permitted Use */}
+          <div
+            className={`transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
 
-            <div className="relative bg-slate-900/80 backdrop-blur-sm border border-yellow-500/20 rounded-2xl p-8">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-600">
-                  <FileText className="w-6 h-6 text-white" />
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <CheckCircle className="w-8 h-8 text-green-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
+                    Permitted Use
+                  </h2>
                 </div>
-
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-4">
-                    Important Notice
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                    By using Astroz, you acknowledge that you have read, understood, and agree to be bound by these
-                    Terms of Service. If you do not agree to these terms, please discontinue use of the bot immediately.
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Astroz is designed to enhance your Discord server experience. You may use our services for
+                    legitimate purposes including:
                   </p>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="/contact"
-                      className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
-                    >
-                      <span className="relative z-10">Contact Support</span>
-                    </a>
-
-                    <a
-                      href="/privacy"
-                      className="group relative inline-flex items-center gap-2 px-6 py-3 border-2 border-purple-500/50 rounded-lg font-semibold text-purple-400 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-purple-400 hover:text-white hover:shadow-lg hover:shadow-purple-500/25"
-                    >
-                      <span className="relative z-10">Privacy Policy</span>
-                    </a>
-                  </div>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Server moderation and management
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Community engagement and entertainment
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Music streaming and audio features
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Server analytics and insights
+                    </li>
+                  </ul>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Prohibited Activities */}
+          <div
+            className={`transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-red-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <XCircle className="w-8 h-8 text-red-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
+                    Prohibited Activities
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>The following activities are strictly prohibited when using Astroz:</p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <XCircle className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      Using Astroz for spam, harassment, or abusive behavior
+                    </li>
+                    <li className="flex items-start">
+                      <XCircle className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      Attempting to exploit, hack, or reverse engineer our services
+                    </li>
+                    <li className="flex items-start">
+                      <XCircle className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      Violating Discord's Terms of Service or Community Guidelines
+                    </li>
+                    <li className="flex items-start">
+                      <XCircle className="w-4 h-4 text-red-400 mt-1 mr-3 flex-shrink-0" />
+                      Using our services for illegal activities or content
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Service Availability */}
+          <div
+            className={`transition-all duration-1000 delay-900 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-orange-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <AlertCircle className="w-8 h-8 text-orange-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                    Service Availability
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    While we strive to maintain 99.9% uptime, we cannot guarantee uninterrupted service availability.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <Info className="w-4 h-4 text-orange-400 mt-1 mr-3 flex-shrink-0" />
+                      Scheduled maintenance may temporarily interrupt service
+                    </li>
+                    <li className="flex items-start">
+                      <Info className="w-4 h-4 text-orange-400 mt-1 mr-3 flex-shrink-0" />
+                      We reserve the right to modify or discontinue features
+                    </li>
+                    <li className="flex items-start">
+                      <Info className="w-4 h-4 text-orange-400 mt-1 mr-3 flex-shrink-0" />
+                      Emergency maintenance may occur without prior notice
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Information */}
+          <div
+            className={`transition-all duration-1000 delay-1100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 text-center">
+                <Scale className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                  Questions About These Terms?
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  If you have any questions about these Terms of Service, please contact our support team.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button className="group relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
+                    <span className="relative z-10">Contact Support</span>
+                  </button>
+
+                  <button className="group relative px-6 py-3 border-2 border-cyan-500/50 rounded-lg font-semibold text-cyan-400 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:text-white hover:shadow-lg hover:shadow-cyan-500/25">
+                    <span className="relative z-10">Join Discord</span>
+                  </button>
+                </div>
+
+                <p className="text-sm text-gray-400 mt-6">Last updated: January 2024</p>
               </div>
             </div>
           </div>

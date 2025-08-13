@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Navigation from "@/components/navigation"
-import { Shield, Database, Lock, Users, FileText, AlertCircle, Mail, RefreshCw } from "lucide-react"
+import { Shield, Eye, Lock, Database, UserCheck, AlertTriangle } from "lucide-react"
 
 export default function Privacy() {
   const [mounted, setMounted] = useState(false)
@@ -11,102 +11,10 @@ export default function Privacy() {
     setMounted(true)
   }, [])
 
-  const sections = [
-    {
-      icon: Shield,
-      title: "Introduction",
-      content:
-        "Welcome to our Astroz Development! We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines the types of information we collect, how we use it, and the measures we take to safeguard your data while using our bot's features.",
-      color: "from-cyan-400 to-blue-600",
-    },
-    {
-      icon: Database,
-      title: "Information Collection",
-      content: [
-        {
-          subtitle: "User Information",
-          text: "This includes Discord usernames, user IDs, and server IDs to provide personalized features and manage server-specific settings.",
-        },
-        {
-          subtitle: "Message Content",
-          text: "Messages sent to or via the bot may be temporarily stored to provide functionalities such as moderation, automoderation, and autoresponder services.",
-        },
-        {
-          subtitle: "Server Data",
-          text: "Information about your server configuration, such as roles, permissions, and channel structures, to enable features like reaction roles, verification, and utility commands.",
-        },
-      ],
-      color: "from-purple-400 to-indigo-600",
-    },
-    {
-      icon: Users,
-      title: "Usage of Information",
-      content: [
-        {
-          subtitle: "Feature Provision",
-          text: "To deliver and enhance features such as the economy system, games, giveaways, fun activities, and more.",
-        },
-        {
-          subtitle: "Moderation and Security",
-          text: "To maintain server security, enforce rules, and prevent unauthorized changes or malicious attacks.",
-        },
-        {
-          subtitle: "User Engagement",
-          text: "To personalize user experiences, manage role assignments, and provide automated responses to common queries.",
-        },
-      ],
-      color: "from-green-400 to-emerald-600",
-    },
-    {
-      icon: Lock,
-      title: "Data Storage and Security",
-      content: [
-        {
-          subtitle: "Data Retention",
-          text: "We retain collected data only for as long as necessary to fulfill the purposes outlined in this policy. Temporary data, such as message content, is stored only for the duration needed to provide the relevant feature.",
-        },
-        {
-          subtitle: "Security Measures",
-          text: "We employ encryption, access controls, and regular security audits to ensure the safety of your information.",
-        },
-      ],
-      color: "from-red-400 to-pink-600",
-    },
-    {
-      icon: FileText,
-      title: "Third-Party Services",
-      content:
-        "Our bot may integrate with third-party services to enhance its functionality. We ensure that any third-party service providers comply with relevant data protection regulations and handle your data securely.",
-      color: "from-orange-400 to-yellow-600",
-    },
-    {
-      icon: AlertCircle,
-      title: "User Rights",
-      content:
-        "You have the right to access, update, or delete your personal information at any time. If you have any concerns about your data or need assistance, please contact us through the support channels provided.",
-      color: "from-teal-400 to-cyan-600",
-    },
-    {
-      icon: RefreshCw,
-      title: "Changes to This Policy",
-      content:
-        "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be communicated through our Discord server or other appropriate channels.",
-      color: "from-indigo-400 to-purple-600",
-    },
-    {
-      icon: Mail,
-      title: "Contact Us",
-      content:
-        "If you have any questions or concerns about this Privacy Policy or our data practices, please reach out to us via our support system.",
-      color: "from-pink-400 to-rose-600",
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden pb-20">
-      {/* Animated Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Floating Particles */}
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
@@ -119,109 +27,228 @@ export default function Privacy() {
             }}
           />
         ))}
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 px-4 py-12">
         {/* Header */}
         <div className="text-center mb-16">
           <div
             className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
+            <div className="relative group inline-block mb-8">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+              <Shield className="relative w-16 h-16 text-cyan-400 mx-auto" />
+            </div>
+
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
               Privacy Policy
             </h1>
             <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
-            <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-              Your privacy and data security are our top priorities
+            <p className="text-xl text-gray-300 mt-6 max-w-2xl mx-auto">
+              Your privacy is important to us. Learn how we collect, use, and protect your data.
             </p>
           </div>
         </div>
 
-        {/* Privacy Sections */}
+        {/* Privacy Content */}
         <div className="max-w-4xl mx-auto space-y-8">
-          {sections.map((section, index) => {
-            const IconComponent = section.icon
-            return (
-              <div
-                key={section.title}
-                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${
-                  mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <div className="relative group">
-                  <div
-                    className={`absolute -inset-1 bg-gradient-to-r ${section.color} rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-all duration-300`}
-                  />
+          {/* Data Collection */}
+          <div
+            className={`transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
 
-                  <div className="relative bg-slate-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:border-gray-600/50 transition-all duration-300">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${section.color} mt-1`}
-                      >
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-
-                      <div className="flex-1">
-                        <h3
-                          className={`text-2xl font-bold bg-gradient-to-r ${section.color} bg-clip-text text-transparent mb-4`}
-                        >
-                          {section.title}
-                        </h3>
-
-                        {Array.isArray(section.content) ? (
-                          <div className="space-y-4">
-                            {section.content.map((item, itemIndex) => (
-                              <div key={itemIndex}>
-                                <h4 className="text-lg font-semibold text-gray-200 mb-2">{item.subtitle}</h4>
-                                <p className="text-gray-300 leading-relaxed">{item.text}</p>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-gray-300 leading-relaxed text-lg">{section.content}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <Database className="w-8 h-8 text-blue-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    Data Collection
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Astroz collects minimal data necessary to provide our services effectively. We only collect
+                    information that is essential for bot functionality and server management.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Discord user IDs and server IDs for command processing
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Message content only when explicitly using moderation features
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Server configuration settings and preferences
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Usage statistics for service improvement
+                    </li>
+                  </ul>
                 </div>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          </div>
 
-        {/* Contact CTA */}
-        <div
-          className={`mt-16 text-center transition-all duration-1000 delay-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <div className="relative group max-w-2xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+          {/* Data Usage */}
+          <div
+            className={`transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
 
-            <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                Questions About Privacy?
-              </h3>
-              <p className="text-gray-300 mb-6">
-                If you have any concerns about your data or need clarification on our privacy practices, we're here to
-                help.
-              </p>
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <Eye className="w-8 h-8 text-purple-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    How We Use Your Data
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    Your data is used solely to provide and improve Astroz's services. We never sell, rent, or share
+                    your personal information with third parties for marketing purposes.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Processing commands and providing bot functionality
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Maintaining server configurations and user preferences
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Analyzing usage patterns to improve service quality
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Providing customer support and troubleshooting
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <a
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
-              >
-                <span className="relative z-10">Contact Support</span>
-              </a>
+          {/* Data Protection */}
+          <div
+            className={`transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-green-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <Lock className="w-8 h-8 text-green-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">
+                    Data Protection
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    We implement industry-standard security measures to protect your data from unauthorized access,
+                    alteration, disclosure, or destruction.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Encrypted data transmission using TLS/SSL protocols
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Secure database storage with access controls
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Regular security audits and vulnerability assessments
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Limited access to data on a need-to-know basis
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* User Rights */}
+          <div
+            className={`transition-all duration-1000 delay-900 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-orange-500/20 rounded-2xl p-8">
+                <div className="flex items-center mb-6">
+                  <UserCheck className="w-8 h-8 text-orange-500 mr-4" />
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                    Your Rights
+                  </h2>
+                </div>
+                <div className="space-y-4 text-gray-300">
+                  <p>
+                    You have several rights regarding your personal data. We are committed to helping you exercise these
+                    rights in accordance with applicable privacy laws.
+                  </p>
+                  <ul className="space-y-2 ml-6">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Right to access your personal data
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Right to correct inaccurate information
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Right to delete your data (where legally permissible)
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      Right to data portability
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Information */}
+          <div
+            className={`transition-all duration-1000 delay-1100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
+
+              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 text-center">
+                <AlertTriangle className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                  Questions or Concerns?
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  If you have any questions about this Privacy Policy or how we handle your data, please don't hesitate
+                  to contact us.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button className="group relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
+                    <span className="relative z-10">Contact Support</span>
+                  </button>
+
+                  <button className="group relative px-6 py-3 border-2 border-cyan-500/50 rounded-lg font-semibold text-cyan-400 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:text-white hover:shadow-lg hover:shadow-cyan-500/25">
+                    <span className="relative z-10">Join Discord</span>
+                  </button>
+                </div>
+
+                <p className="text-sm text-gray-400 mt-6">Last updated: January 2024</p>
+              </div>
             </div>
           </div>
         </div>
