@@ -1,29 +1,35 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
+import { AlertCircle } from "lucide-react"
+
+const errorMessages = {
+  Configuration: "There is a problem with the server configuration.",
+  AccessDenied: "You do not have permission to sign in.",
+  Verification: "The verification token has expired or has already been used.",
+  Default: "An error occurred during authentication.",
+}
 
 export default function AuthError() {
   const searchParams = useSearchParams()
-  const error = searchParams.get("error")
+  const error = searchParams.get("error") as keyof typeof errorMessages
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
-      <Card className="w-[400px]">
-        <CardHeader>
-          <CardTitle>Authentication Error</CardTitle>
-          <CardDescription>There was a problem signing you in.</CardDescription>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
+            <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
+          </div>
+          <CardTitle className="text-2xl">Authentication Error</CardTitle>
+          <CardDescription>{errorMessages[error] || errorMessages.Default}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          {error && (
-            <div className="rounded-md bg-destructive/15 p-3">
-              <p className="text-sm text-destructive">Error: {error}</p>
-            </div>
-          )}
+        <CardContent className="text-center">
           <Button asChild className="w-full">
-            <Link href="/">Return to Home</Link>
+            <Link href="/">Return Home</Link>
           </Button>
         </CardContent>
       </Card>

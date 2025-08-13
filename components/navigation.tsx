@@ -2,10 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
 import { AuthButton } from "@/components/auth-button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
+import { cn } from "@/lib/utils"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -26,32 +25,34 @@ export default function Navigation() {
     <>
       {/* Top Auth Bar */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
-              <span className="font-bold">Astroz</span>
-            </Link>
-          </div>
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <AuthButton />
+        <div className="container mx-auto px-4 py-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-2">
+                <img src="/astroz-logo.gif" alt="Astroz Bot" className="h-8 w-8" />
+                <span className="font-bold text-lg">Astroz</span>
+              </Link>
+            </div>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <AuthButton />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container">
-          <div className="flex h-14 items-center justify-center">
-            <div className="flex items-center space-x-6 text-sm font-medium">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center">
+            <div className="flex items-center space-x-8 overflow-x-auto py-4">
               {navigation.map((item) => (
                 <Link
-                  key={item.href}
+                  key={item.name}
                   href={item.href}
                   className={cn(
-                    "transition-colors hover:text-foreground/80",
-                    pathname === item.href ? "text-foreground" : "text-foreground/60",
+                    "whitespace-nowrap text-sm font-medium transition-colors hover:text-primary",
+                    pathname === item.href ? "text-primary border-b-2 border-primary pb-2" : "text-muted-foreground",
                   )}
                 >
                   {item.name}
