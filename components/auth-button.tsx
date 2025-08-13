@@ -4,17 +4,13 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { LogIn, LogOut, User } from "lucide-react"
+import { LogOut, User } from "lucide-react"
 
 export default function AuthButton() {
   const { data: session, status } = useSession()
 
   if (status === "loading") {
-    return (
-      <Button variant="ghost" size="sm" disabled>
-        <div className="w-4 h-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-      </Button>
-    )
+    return <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
   }
 
   if (session?.user) {
@@ -27,7 +23,7 @@ export default function AuthButton() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={avatarUrl || undefined} alt={session.user.username || "User"} />
+              <AvatarImage src={avatarUrl || undefined} alt={session.user.name || "User"} />
               <AvatarFallback>
                 <User className="h-4 w-4" />
               </AvatarFallback>
@@ -37,7 +33,7 @@ export default function AuthButton() {
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <div className="flex items-center justify-start gap-2 p-2">
             <div className="flex flex-col space-y-1 leading-none">
-              <p className="font-medium">{session.user.username}</p>
+              <p className="font-medium">{session.user.name}</p>
               <p className="w-[200px] truncate text-sm text-muted-foreground">{session.user.email}</p>
             </div>
           </div>
@@ -51,8 +47,7 @@ export default function AuthButton() {
   }
 
   return (
-    <Button variant="ghost" size="sm" onClick={() => signIn("discord")} className="text-sm font-medium">
-      <LogIn className="mr-2 h-4 w-4" />
+    <Button onClick={() => signIn("discord")} className="bg-[#5865F2] hover:bg-[#4752C4] text-white">
       Login with Discord
     </Button>
   )

@@ -2,19 +2,20 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import Providers from "./providers"
+import { Providers } from "./providers"
 import Navigation from "@/components/navigation"
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Astroz - Advanced Discord Bot",
-  description: "The ultimate Discord bot with moderation, music, economy, and more features",
-  keywords: ["discord bot", "moderation", "music bot", "discord", "astroz"],
-  authors: [{ name: "RIYAD" }],
+  description: "The most advanced Discord bot with moderation, music, games, and more features.",
+  keywords: ["discord bot", "moderation", "music", "games", "astroz"],
+  authors: [{ name: "Astroz Team" }],
   openGraph: {
     title: "Astroz - Advanced Discord Bot",
-    description: "The ultimate Discord bot with moderation, music, economy, and more features",
+    description: "The most advanced Discord bot with moderation, music, games, and more features.",
     type: "website",
   },
     generator: 'v0.app'
@@ -29,8 +30,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <Navigation />
-          <main className="pt-14 pb-20">{children}</main>
+          <div className="relative flex min-h-screen flex-col">
+            <Navigation />
+            <main className="flex-1">{children}</main>
+          </div>
+          <Toaster />
         </Providers>
       </body>
     </html>

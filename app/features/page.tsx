@@ -1,420 +1,489 @@
-"use client"
-
+import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Shield,
   Music,
-  Coins,
-  TrendingUp,
-  Zap,
-  BarChart3,
+  Gamepad2,
   Users,
+  Zap,
+  Settings,
   MessageSquare,
   Calendar,
-  Gift,
-  Settings,
+  Trophy,
+  Heart,
+  Bot,
   Lock,
   Volume2,
-  DollarSign,
-  Trophy,
-  Command,
-  PieChart,
-  UserPlus,
-  Hash,
-  Clock,
-  Star,
-  Heart,
-  Gamepad2,
+  Dice1,
+  UserCheck,
   Bell,
-  Filter,
-  Database,
-  Cpu,
-  Wifi,
-  ExternalLink,
+  BarChart3,
+  Gift,
+  Star,
+  Sparkles,
 } from "lucide-react"
-import NextLink from "next/link"
 
 export default function FeaturesPage() {
-  const featureCategories = [
-    {
-      title: "Moderation & Security",
-      description: "Keep your server safe with advanced moderation tools",
-      icon: Shield,
-      color: "from-red-500 to-pink-500",
-      features: [
-        {
-          name: "Auto Moderation",
-          description: "Automatically detect and handle spam, inappropriate content, and rule violations",
-          icon: Shield,
-        },
-        {
-          name: "Custom Filters",
-          description: "Create custom word filters and automod rules tailored to your community",
-          icon: Filter,
-        },
-        {
-          name: "Raid Protection",
-          description: "Advanced anti-raid systems to protect against mass joins and attacks",
-          icon: Lock,
-        },
-        {
-          name: "Logging System",
-          description: "Comprehensive logging of all moderation actions and server events",
-          icon: Database,
-        },
-        {
-          name: "Warning System",
-          description: "Issue warnings to users with automatic escalation and punishment",
-          icon: Bell,
-        },
-        {
-          name: "Verification",
-          description: "Captcha and role-based verification systems for new members",
-          icon: UserPlus,
-        },
-      ],
-    },
-    {
-      title: "Music & Entertainment",
-      description: "High-quality music streaming and entertainment features",
-      icon: Music,
-      color: "from-purple-500 to-indigo-500",
-      features: [
-        {
-          name: "High-Quality Audio",
-          description: "Crystal clear music streaming from YouTube, Spotify, and more sources",
-          icon: Volume2,
-        },
-        {
-          name: "Queue Management",
-          description: "Advanced queue system with shuffle, repeat, and playlist support",
-          icon: Music,
-        },
-        {
-          name: "DJ Controls",
-          description: "DJ role permissions and advanced music controls for moderators",
-          icon: Settings,
-        },
-        {
-          name: "Music Games",
-          description: "Interactive music games and trivia for community engagement",
-          icon: Gamepad2,
-        },
-        {
-          name: "Lyrics Display",
-          description: "Real-time lyrics display for currently playing songs",
-          icon: MessageSquare,
-        },
-        {
-          name: "Radio Stations",
-          description: "24/7 radio stations and live streaming support",
-          icon: Wifi,
-        },
-      ],
-    },
-    {
-      title: "Economy & Rewards",
-      description: "Engaging economy system to keep your community active",
-      icon: Coins,
-      color: "from-yellow-500 to-orange-500",
-      features: [
-        {
-          name: "Virtual Currency",
-          description: "Custom currency system with earning, spending, and trading",
-          icon: DollarSign,
-        },
-        {
-          name: "Shop System",
-          description: "Virtual shop with items, roles, and custom rewards for purchase",
-          icon: Gift,
-        },
-        {
-          name: "Daily Rewards",
-          description: "Daily, weekly, and monthly rewards to encourage regular participation",
-          icon: Calendar,
-        },
-        {
-          name: "Mini Games",
-          description: "Economy-based games like slots, blackjack, and coin flip",
-          icon: Gamepad2,
-        },
-        {
-          name: "Work System",
-          description: "Virtual jobs and work commands to earn currency",
-          icon: Cpu,
-        },
-        {
-          name: "Leaderboards",
-          description: "Rich leaderboards showing top earners and spenders",
-          icon: Trophy,
-        },
-      ],
-    },
-    {
-      title: "Leveling & XP",
-      description: "Motivate your community with progression systems",
-      icon: TrendingUp,
-      color: "from-green-500 to-emerald-500",
-      features: [
-        {
-          name: "XP System",
-          description: "Earn XP through chatting, voice activity, and special events",
-          icon: TrendingUp,
-        },
-        {
-          name: "Level Roles",
-          description: "Automatic role rewards when users reach certain levels",
-          icon: Users,
-        },
-        {
-          name: "Custom Rewards",
-          description: "Set custom rewards and perks for different level milestones",
-          icon: Star,
-        },
-        {
-          name: "Leaderboards",
-          description: "Server and global leaderboards to showcase top members",
-          icon: Trophy,
-        },
-        {
-          name: "Voice XP",
-          description: "Earn XP for time spent in voice channels",
-          icon: Volume2,
-        },
-        {
-          name: "Boost Multipliers",
-          description: "XP boost events and multipliers for special occasions",
-          icon: Zap,
-        },
-      ],
-    },
-    {
-      title: "Custom Commands",
-      description: "Create powerful automation and custom functionality",
-      icon: Zap,
-      color: "from-blue-500 to-cyan-500",
-      features: [
-        {
-          name: "Command Builder",
-          description: "Easy-to-use command builder with variables and conditions",
-          icon: Command,
-        },
-        {
-          name: "Autoresponder",
-          description: "Automatic responses to keywords and phrases",
-          icon: MessageSquare,
-        },
-        {
-          name: "Reaction Roles",
-          description: "Self-assignable roles through message reactions",
-          icon: Heart,
-        },
-        {
-          name: "Welcome Messages",
-          description: "Customizable welcome and goodbye messages with embeds",
-          icon: UserPlus,
-        },
-        {
-          name: "Auto Roles",
-          description: "Automatically assign roles to new members",
-          icon: Users,
-        },
-        {
-          name: "Scheduled Messages",
-          description: "Schedule messages and announcements for later",
-          icon: Clock,
-        },
-      ],
-    },
-    {
-      title: "Analytics & Insights",
-      description: "Detailed insights into your server's activity and growth",
-      icon: BarChart3,
-      color: "from-teal-500 to-blue-500",
-      features: [
-        {
-          name: "Server Statistics",
-          description: "Comprehensive stats on member activity and engagement",
-          icon: PieChart,
-        },
-        {
-          name: "Growth Tracking",
-          description: "Track server growth, member joins, and retention rates",
-          icon: TrendingUp,
-        },
-        {
-          name: "Channel Analytics",
-          description: "Detailed analytics for individual channels and categories",
-          icon: Hash,
-        },
-        {
-          name: "Member Insights",
-          description: "Individual member activity and engagement metrics",
-          icon: Users,
-        },
-        {
-          name: "Export Data",
-          description: "Export analytics data for external analysis",
-          icon: Database,
-        },
-        {
-          name: "Real-time Dashboard",
-          description: "Live dashboard with real-time server metrics",
-          icon: BarChart3,
-        },
-      ],
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Powerful Features
-            </span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Discover all the amazing features that make Astroz the ultimate Discord bot for your server
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300"
-          >
-            <NextLink href="https://discord.com/oauth2/authorize?client_id=1294043496843444256&permissions=8&scope=bot%20applications.commands">
-              Add Astroz Now <ExternalLink className="ml-2 h-5 w-5" />
-            </NextLink>
-          </Button>
-        </div>
-      </section>
+    <div className="container mx-auto px-4 py-12">
+      <div className="mx-auto max-w-4xl text-center mb-16">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl mb-6">Powerful Features</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300">
+          Discover all the amazing features that make Astroz the ultimate Discord bot for your server
+        </p>
+      </div>
 
-      {/* Features Categories */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-20">
-          {featureCategories.map((category, categoryIndex) => (
-            <div key={category.title} className="space-y-8">
-              {/* Category Header */}
-              <div className="text-center">
-                <div className="flex justify-center mb-4">
-                  <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} flex items-center justify-center shadow-lg`}
-                  >
-                    <category.icon className="h-8 w-8 text-white" />
-                  </div>
+      <Tabs defaultValue="moderation" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8">
+          <TabsTrigger value="moderation">Moderation</TabsTrigger>
+          <TabsTrigger value="music">Music</TabsTrigger>
+          <TabsTrigger value="games">Games & Fun</TabsTrigger>
+          <TabsTrigger value="utility">Utility</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="moderation" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-5 w-5 text-blue-600" />
+                  <CardTitle className="text-lg">Auto Moderation</CardTitle>
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{category.title}</h2>
-                <p className="text-xl text-gray-400 max-w-2xl mx-auto">{category.description}</p>
-              </div>
+                <CardDescription>
+                  Automatically detect and handle spam, inappropriate content, and rule violations
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Anti-Spam</Badge>
+                  <Badge variant="secondary">Link Filter</Badge>
+                  <Badge variant="secondary">Word Filter</Badge>
+                </div>
+              </CardContent>
+            </Card>
 
-              {/* Features Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.features.map((feature, featureIndex) => (
-                  <Card
-                    key={feature.name}
-                    className="bg-slate-800/50 border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 group"
-                    style={{ animationDelay: `${(categoryIndex * 6 + featureIndex) * 50}ms` }}
-                  >
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center space-x-3">
-                        <div
-                          className={`w-10 h-10 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                        >
-                          <feature.icon className="h-5 w-5 text-white" />
-                        </div>
-                        <CardTitle className="text-white text-lg">{feature.name}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <CardDescription className="text-gray-400">{feature.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Lock className="h-5 w-5 text-red-600" />
+                  <CardTitle className="text-lg">Advanced Punishments</CardTitle>
+                </div>
+                <CardDescription>Comprehensive punishment system with warnings, mutes, kicks, and bans</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Warnings</Badge>
+                  <Badge variant="secondary">Temporary Mutes</Badge>
+                  <Badge variant="secondary">Auto Punishments</Badge>
+                </div>
+              </CardContent>
+            </Card>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Trusted by Communities</h2>
-            <p className="text-xl text-gray-400">Join thousands of servers already using Astroz</p>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <BarChart3 className="h-5 w-5 text-green-600" />
+                  <CardTitle className="text-lg">Moderation Logs</CardTitle>
+                </div>
+                <CardDescription>Detailed logging of all moderation actions and server events</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Action Logs</Badge>
+                  <Badge variant="secondary">Message Logs</Badge>
+                  <Badge variant="secondary">Member Logs</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <UserCheck className="h-5 w-5 text-purple-600" />
+                  <CardTitle className="text-lg">Role Management</CardTitle>
+                </div>
+                <CardDescription>Advanced role assignment and management with reaction roles</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Reaction Roles</Badge>
+                  <Badge variant="secondary">Auto Roles</Badge>
+                  <Badge variant="secondary">Role Hierarchy</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Bell className="h-5 w-5 text-orange-600" />
+                  <CardTitle className="text-lg">Alert System</CardTitle>
+                </div>
+                <CardDescription>Real-time alerts for suspicious activities and rule violations</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Raid Protection</Badge>
+                  <Badge variant="secondary">Mass Mention</Badge>
+                  <Badge variant="secondary">Suspicious Activity</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Settings className="h-5 w-5 text-gray-600" />
+                  <CardTitle className="text-lg">Custom Commands</CardTitle>
+                </div>
+                <CardDescription>Create custom moderation commands tailored to your server needs</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Custom Responses</Badge>
+                  <Badge variant="secondary">Automod Rules</Badge>
+                  <Badge variant="secondary">Server Specific</Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
+        </TabsContent>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="flex justify-center mb-2">
-                <Users className="h-8 w-8 text-cyan-400" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1">1.1K+</div>
-              <div className="text-gray-400">Active Servers</div>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2">
-                <Star className="h-8 w-8 text-cyan-400" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1">3.8M+</div>
-              <div className="text-gray-400">Happy Users</div>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2">
-                <Clock className="h-8 w-8 text-cyan-400" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1">99.9%</div>
-              <div className="text-gray-400">Uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2">
-                <Command className="h-8 w-8 text-cyan-400" />
-              </div>
-              <div className="text-2xl sm:text-3xl font-bold text-white mb-1">100+</div>
-              <div className="text-gray-400">Commands</div>
-            </div>
+        <TabsContent value="music" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Volume2 className="h-5 w-5 text-blue-600" />
+                  <CardTitle className="text-lg">High-Quality Audio</CardTitle>
+                </div>
+                <CardDescription>Crystal clear music streaming with support for multiple platforms</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">YouTube</Badge>
+                  <Badge variant="secondary">Spotify</Badge>
+                  <Badge variant="secondary">SoundCloud</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Music className="h-5 w-5 text-purple-600" />
+                  <CardTitle className="text-lg">Playlist Management</CardTitle>
+                </div>
+                <CardDescription>Create, save, and share playlists with advanced queue management</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Custom Playlists</Badge>
+                  <Badge variant="secondary">Queue Control</Badge>
+                  <Badge variant="secondary">Shuffle & Loop</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Settings className="h-5 w-5 text-green-600" />
+                  <CardTitle className="text-lg">Audio Controls</CardTitle>
+                </div>
+                <CardDescription>Advanced audio controls including bass boost, equalizer, and filters</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Bass Boost</Badge>
+                  <Badge variant="secondary">Equalizer</Badge>
+                  <Badge variant="secondary">Audio Filters</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Users className="h-5 w-5 text-red-600" />
+                  <CardTitle className="text-lg">Multi-Server Support</CardTitle>
+                </div>
+                <CardDescription>Play music in multiple servers simultaneously with independent queues</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Multiple Servers</Badge>
+                  <Badge variant="secondary">Independent Queues</Badge>
+                  <Badge variant="secondary">24/7 Mode</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Zap className="h-5 w-5 text-yellow-600" />
+                  <CardTitle className="text-lg">Fast Loading</CardTitle>
+                </div>
+                <CardDescription>Lightning-fast song loading and seamless playback experience</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Instant Play</Badge>
+                  <Badge variant="secondary">No Buffering</Badge>
+                  <Badge variant="secondary">99.9% Uptime</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Star className="h-5 w-5 text-orange-600" />
+                  <CardTitle className="text-lg">Premium Features</CardTitle>
+                </div>
+                <CardDescription>Exclusive premium features for enhanced music experience</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Skip Limits</Badge>
+                  <Badge variant="secondary">Priority Queue</Badge>
+                  <Badge variant="secondary">Custom Filters</Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </div>
-      </section>
+        </TabsContent>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-cyan-900/20 to-blue-900/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Experience all these amazing features in your Discord server today
-          </p>
+        <TabsContent value="games" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Dice1 className="h-5 w-5 text-blue-600" />
+                  <CardTitle className="text-lg">Mini Games</CardTitle>
+                </div>
+                <CardDescription>Engaging mini-games to keep your community entertained</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Trivia</Badge>
+                  <Badge variant="secondary">Word Games</Badge>
+                  <Badge variant="secondary">Number Games</Badge>
+                </div>
+              </CardContent>
+            </Card>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 text-lg font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300"
-            >
-              <NextLink href="https://discord.com/oauth2/authorize?client_id=1294043496843444256&permissions=8&scope=bot%20applications.commands">
-                Invite Astroz <ExternalLink className="ml-2 h-5 w-5" />
-              </NextLink>
-            </Button>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Trophy className="h-5 w-5 text-yellow-600" />
+                  <CardTitle className="text-lg">Leaderboards</CardTitle>
+                </div>
+                <CardDescription>Competitive leaderboards and achievement systems</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">XP System</Badge>
+                  <Badge variant="secondary">Achievements</Badge>
+                  <Badge variant="secondary">Rankings</Badge>
+                </div>
+              </CardContent>
+            </Card>
 
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 px-8 py-3 text-lg font-semibold bg-transparent"
-            >
-              <NextLink href="https://discord.gg/TCHCDc5bhQ">
-                Get Support <ExternalLink className="ml-2 h-5 w-5" />
-              </NextLink>
-            </Button>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Gamepad2 className="h-5 w-5 text-purple-600" />
+                  <CardTitle className="text-lg">Interactive Games</CardTitle>
+                </div>
+                <CardDescription>Multi-player interactive games for community engagement</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Rock Paper Scissors</Badge>
+                  <Badge variant="secondary">Tic Tac Toe</Badge>
+                  <Badge variant="secondary">Hangman</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Gift className="h-5 w-5 text-green-600" />
+                  <CardTitle className="text-lg">Economy System</CardTitle>
+                </div>
+                <CardDescription>Virtual economy with currency, shops, and trading</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Virtual Currency</Badge>
+                  <Badge variant="secondary">Daily Rewards</Badge>
+                  <Badge variant="secondary">Shop System</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Heart className="h-5 w-5 text-red-600" />
+                  <CardTitle className="text-lg">Social Features</CardTitle>
+                </div>
+                <CardDescription>Social interaction features to build community bonds</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Marriage System</Badge>
+                  <Badge variant="secondary">Pet System</Badge>
+                  <Badge variant="secondary">Profile Cards</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Sparkles className="h-5 w-5 text-pink-600" />
+                  <CardTitle className="text-lg">Fun Commands</CardTitle>
+                </div>
+                <CardDescription>Entertaining commands for memes, jokes, and random fun</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Meme Generator</Badge>
+                  <Badge variant="secondary">Jokes</Badge>
+                  <Badge variant="secondary">Random Facts</Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </div>
-      </section>
+        </TabsContent>
 
-      {/* Padding for bottom navigation */}
-      <div className="h-20"></div>
+        <TabsContent value="utility" className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Calendar className="h-5 w-5 text-blue-600" />
+                  <CardTitle className="text-lg">Event Management</CardTitle>
+                </div>
+                <CardDescription>Create and manage server events with reminders and RSVP</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Event Creation</Badge>
+                  <Badge variant="secondary">Reminders</Badge>
+                  <Badge variant="secondary">RSVP System</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <MessageSquare className="h-5 w-5 text-green-600" />
+                  <CardTitle className="text-lg">Auto Messages</CardTitle>
+                </div>
+                <CardDescription>Automated welcome messages, announcements, and scheduled posts</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Welcome Messages</Badge>
+                  <Badge variant="secondary">Auto Announcements</Badge>
+                  <Badge variant="secondary">Scheduled Posts</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <BarChart3 className="h-5 w-5 text-purple-600" />
+                  <CardTitle className="text-lg">Server Analytics</CardTitle>
+                </div>
+                <CardDescription>Detailed server statistics and member activity insights</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Member Stats</Badge>
+                  <Badge variant="secondary">Activity Tracking</Badge>
+                  <Badge variant="secondary">Growth Analytics</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Bot className="h-5 w-5 text-orange-600" />
+                  <CardTitle className="text-lg">Custom Responses</CardTitle>
+                </div>
+                <CardDescription>Create custom auto-responses and chatbot functionality</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Auto Responses</Badge>
+                  <Badge variant="secondary">Keyword Triggers</Badge>
+                  <Badge variant="secondary">Smart Replies</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Settings className="h-5 w-5 text-gray-600" />
+                  <CardTitle className="text-lg">Server Management</CardTitle>
+                </div>
+                <CardDescription>Comprehensive server management tools and utilities</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Channel Management</Badge>
+                  <Badge variant="secondary">Permission Control</Badge>
+                  <Badge variant="secondary">Backup System</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center space-x-2">
+                  <Zap className="h-5 w-5 text-yellow-600" />
+                  <CardTitle className="text-lg">Quick Actions</CardTitle>
+                </div>
+                <CardDescription>Fast and efficient commands for common server tasks</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Quick Polls</Badge>
+                  <Badge variant="secondary">Mass Actions</Badge>
+                  <Badge variant="secondary">Bulk Operations</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+      </Tabs>
+
+      <div className="mt-16 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience All Features?</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-8">
+          Join 1.1K+ servers and 3.8M+ users already enjoying Astroz
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot%20applications.commands"
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+          >
+            <Bot className="mr-2 h-5 w-5" />
+            Invite Astroz
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
