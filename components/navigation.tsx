@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { AuthButton } from "@/components/auth-button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import AuthButton from "./auth-button"
+import { ThemeToggle } from "./theme-toggle"
 import Image from "next/image"
 
 const navigation = [
@@ -29,10 +29,8 @@ export default function Navigation() {
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src="/astroz-logo.gif" alt="Astroz Bot" width={32} height={32} className="rounded-full" />
-              <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Astroz
-              </span>
+              <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
+              <span className="font-bold">Astroz</span>
             </Link>
           </div>
           <div className="flex items-center space-x-4">

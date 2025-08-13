@@ -9,13 +9,13 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz Bot - Advanced Discord Bot",
-  description: "Astroz is a powerful Discord bot with moderation, music, and utility features for your server.",
-  keywords: ["discord bot", "moderation", "music", "utility", "astroz"],
+  title: "Astroz - Advanced Discord Bot",
+  description: "The most advanced Discord bot with powerful moderation, music, and utility features.",
+  keywords: ["discord bot", "moderation", "music bot", "utility bot", "astroz"],
   authors: [{ name: "Astroz Team" }],
   openGraph: {
-    title: "Astroz Bot - Advanced Discord Bot",
-    description: "Astroz is a powerful Discord bot with moderation, music, and utility features for your server.",
+    title: "Astroz - Advanced Discord Bot",
+    description: "The most advanced Discord bot with powerful moderation, music, and utility features.",
     type: "website",
   },
     generator: 'v0.app'
