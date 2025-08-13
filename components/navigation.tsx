@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { MoreHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
 const mainNavItems = [
   { href: "/", label: "Home" },
@@ -21,7 +22,7 @@ const dropdownNavItems = [
   { href: "/terms", label: "Terms" },
 ]
 
-export function Navigation() {
+export default function Navigation() {
   const pathname = usePathname()
 
   return (
@@ -30,9 +31,10 @@ export function Navigation() {
         <Link
           key={item.href}
           href={item.href}
-          className={`text-sm font-medium transition-colors hover:text-primary ${
-            pathname === item.href ? "text-foreground" : "text-muted-foreground"
-          }`}
+          className={cn(
+            "text-sm font-medium transition-colors hover:text-primary",
+            pathname === item.href ? "text-foreground" : "text-muted-foreground",
+          )}
         >
           {item.label}
         </Link>
