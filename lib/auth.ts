@@ -4,17 +4,20 @@ import DiscordProvider from "next-auth/providers/discord"
 export const authOptions: NextAuthOptions = {
   providers: [
     DiscordProvider({
-      clientId: process.env.DISCORD_CLIENT_ID || "1234567890",
-      clientSecret: process.env.DISCORD_CLIENT_SECRET || "fallback_secret",
+      clientId: process.env.DISCORD_CLIENT_ID || "1234567890123456789",
+      clientSecret: process.env.DISCORD_CLIENT_SECRET || "abcdefghijklmnopqrstuvwxyz123456",
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     async jwt({ token, account, profile }) {
       if (account && profile) {
         token.id = profile.id
-        token.username = (profile as any).username
-        token.discriminator = (profile as any).discriminator
-        token.avatar = (profile as any).avatar
+        token.username = profile.username
+        token.discriminator = profile.discriminator
+        token.avatar = profile.avatar
       }
       return token
     },
@@ -30,8 +33,5 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     error: "/auth/error",
-  },
-  session: {
-    strategy: "jwt",
   },
 }

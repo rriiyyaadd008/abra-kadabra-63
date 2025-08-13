@@ -29,8 +29,8 @@ export default function Navigation() {
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src="/astroz-logo.gif" alt="Astroz Bot" width={32} height={32} className="rounded-full" />
-              <span className="font-bold">Astroz Bot</span>
+              <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
+              <span className="font-bold">Astroz</span>
             </Link>
           </div>
           <div className="flex items-center space-x-4">

@@ -4,13 +4,12 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
 import Navigation from "@/components/navigation"
-import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz Bot - Advanced Discord Bot",
-  description: "Astroz is a powerful Discord bot with moderation, music, and utility features.",
+  title: "Astroz - Advanced Discord Bot",
+  description: "The most advanced Discord bot with moderation, music, games, and more!",
     generator: 'v0.app'
 }
 
@@ -25,7 +24,6 @@ export default function RootLayout({
         <Providers>
           <Navigation />
           <main>{children}</main>
-          <Toaster />
         </Providers>
       </body>
     </html>

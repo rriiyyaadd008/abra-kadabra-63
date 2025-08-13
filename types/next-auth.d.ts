@@ -11,11 +11,11 @@ declare module "next-auth" {
     }
   }
 
-  interface User {
+  interface Profile {
     id: string
-    username?: string
-    discriminator?: string
-    avatar?: string
+    username: string
+    discriminator: string
+    avatar: string
   }
 }
 
