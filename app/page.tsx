@@ -1,101 +1,141 @@
-import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, Music, Zap, Star } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { Shield, Music, Users, Zap, Star, ArrowRight, Bot, Server, Heart } from "lucide-react"
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto text-center">
           <div className="flex justify-center mb-8">
             <Image
               src="/astroz-logo.gif"
-              alt="Astroz Logo"
+              alt="Astroz Bot"
               width={120}
               height={120}
-              className="rounded-full shadow-lg"
+              className="rounded-full border-4 border-white shadow-lg"
             />
           </div>
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Welcome to Astroz
+            Meet Astroz Bot
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            The most advanced Discord bot with powerful moderation, music, and utility features. Trusted by thousands of
-            servers worldwide.
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            The ultimate Discord bot with advanced moderation, music streaming, and utility features. Trusted by 1.1K+
+            servers and 3.8M+ users worldwide.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
               <Link href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot">
-                Invite Astroz
+                <Bot className="mr-2 h-5 w-5" />
+                Invite to Server
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/features">View Features</Link>
+              <Link href="/features">
+                View Features
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
+        </div>
+      </section>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">1.1K+</div>
-              <div className="text-sm text-muted-foreground">Active Servers</div>
+      {/* Stats Section */}
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="flex justify-center">
+                <Server className="h-12 w-12 text-blue-600" />
+              </div>
+              <h3 className="text-3xl font-bold">1.1K+</h3>
+              <p className="text-gray-600 dark:text-gray-400">Active Servers</p>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">3.8M+</div>
-              <div className="text-sm text-muted-foreground">Happy Users</div>
+            <div className="space-y-2">
+              <div className="flex justify-center">
+                <Users className="h-12 w-12 text-green-600" />
+              </div>
+              <h3 className="text-3xl font-bold">3.8M+</h3>
+              <p className="text-gray-600 dark:text-gray-400">Happy Users</p>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">99.9%</div>
-              <div className="text-sm text-muted-foreground">Uptime</div>
+            <div className="space-y-2">
+              <div className="flex justify-center">
+                <Heart className="h-12 w-12 text-red-600" />
+              </div>
+              <h3 className="text-3xl font-bold">99.9%</h3>
+              <p className="text-gray-600 dark:text-gray-400">Uptime</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Preview */}
-      <section className="py-20 px-4">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Astroz?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Why Choose Astroz?</h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Packed with powerful features to enhance your Discord server experience
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="text-center">
               <CardHeader>
-                <Shield className="h-12 w-12 mx-auto text-blue-600 mb-4" />
+                <Shield className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                 <CardTitle>Advanced Moderation</CardTitle>
-                <CardDescription>
-                  Powerful moderation tools with auto-mod, custom filters, and detailed logging
-                </CardDescription>
               </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Comprehensive moderation tools with auto-mod, warnings, and custom punishments
+                </CardDescription>
+              </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
-                <Music className="h-12 w-12 mx-auto text-purple-600 mb-4" />
+                <Music className="h-12 w-12 text-purple-600 mx-auto mb-4" />
                 <CardTitle>High-Quality Music</CardTitle>
-                <CardDescription>
-                  Crystal clear music streaming with playlist support and advanced controls
-                </CardDescription>
               </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Crystal clear music streaming from YouTube, Spotify, and more platforms
+                </CardDescription>
+              </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
-                <Zap className="h-12 w-12 mx-auto text-yellow-600 mb-4" />
-                <CardTitle>Lightning Fast</CardTitle>
-                <CardDescription>Optimized performance with minimal latency and maximum reliability</CardDescription>
+                <Users className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                <CardTitle>Server Management</CardTitle>
               </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Complete server management with role management, channel tools, and more
+                </CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardHeader>
+                <Zap className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
+                <CardTitle>Lightning Fast</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>Optimized performance with minimal latency and maximum reliability</CardDescription>
+              </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-muted/50">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">What Users Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">What Users Say</h2>
+            <p className="text-gray-600 dark:text-gray-400">Trusted by server owners worldwide</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
                 <div className="flex items-center space-x-2">
@@ -107,7 +147,7 @@ export default function HomePage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   "Astroz has completely transformed our server management. The moderation features are incredible!"
                 </p>
                 <div className="flex items-center space-x-2">
@@ -116,12 +156,11 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold">Alex Johnson</p>
-                    <p className="text-sm text-muted-foreground">Server Owner</p>
+                    <p className="text-sm text-gray-500">Server Owner</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <div className="flex items-center space-x-2">
@@ -133,21 +172,20 @@ export default function HomePage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   "The music quality is amazing and the bot never goes down. Highly recommended!"
                 </p>
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
                     S
                   </div>
                   <div>
                     <p className="font-semibold">Sarah Chen</p>
-                    <p className="text-sm text-muted-foreground">Community Manager</p>
+                    <p className="text-sm text-gray-500">Community Manager</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <div className="flex items-center space-x-2">
@@ -159,16 +197,16 @@ export default function HomePage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  "Easy to set up and use. The support team is fantastic and always helpful!"
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  "Easy to set up and use. The dashboard makes configuration a breeze!"
                 </p>
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
                     M
                   </div>
                   <div>
                     <p className="font-semibold">Mike Rodriguez</p>
-                    <p className="text-sm text-muted-foreground">Gaming Community</p>
+                    <p className="text-sm text-gray-500">Discord Admin</p>
                   </div>
                 </div>
               </CardContent>
@@ -178,15 +216,14 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Join thousands of servers already using Astroz to enhance their Discord experience.
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p className="text-xl mb-8 opacity-90">Join thousands of servers already using Astroz Bot</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
               <Link href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot">
+                <Bot className="mr-2 h-5 w-5" />
                 Add to Server
               </Link>
             </Button>
@@ -196,93 +233,14 @@ export default function HomePage() {
               className="text-white border-white hover:bg-white hover:text-blue-600 bg-transparent"
               asChild
             >
-              <Link href="/dashboard">View Dashboard</Link>
+              <Link href="/dashboard">
+                View Dashboard
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4 bg-muted">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Image src="/astroz-logo.gif" alt="Astroz Logo" width={32} height={32} className="rounded-full" />
-                <span className="font-bold text-lg">Astroz</span>
-              </div>
-              <p className="text-muted-foreground">The most advanced Discord bot for your server needs.</p>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Features</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <Link href="/features" className="hover:text-foreground">
-                    Moderation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/features" className="hover:text-foreground">
-                    Music
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/features" className="hover:text-foreground">
-                    Utilities
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/features" className="hover:text-foreground">
-                    Fun Commands
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Support</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <Link href="/contact" className="hover:text-foreground">
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://discord.gg/astroz" className="hover:text-foreground">
-                    Discord Server
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="hover:text-foreground">
-                    About
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <Link href="/privacy" className="hover:text-foreground">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className="hover:text-foreground">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Astroz. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

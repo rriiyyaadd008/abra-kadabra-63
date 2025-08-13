@@ -18,14 +18,9 @@ export default function AuthError() {
         </CardHeader>
         <CardContent className="space-y-4">
           {error && <div className="p-3 rounded-md bg-destructive/10 text-destructive text-sm">Error: {error}</div>}
-          <div className="flex flex-col space-y-2">
-            <Button asChild>
-              <Link href="/">Return Home</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/auth/signin">Try Again</Link>
-            </Button>
-          </div>
+          <Button asChild className="w-full">
+            <Link href="/">Return Home</Link>
+          </Button>
         </CardContent>
       </Card>
     </div>
