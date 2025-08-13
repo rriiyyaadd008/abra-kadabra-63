@@ -9,9 +9,8 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz Bot - Advanced Discord Bot",
-  description: "Astroz is a powerful Discord bot with moderation, music, games, and more features for your server.",
-  keywords: ["discord bot", "moderation", "music", "games", "server management"],
+  title: "Astroz - Advanced Discord Bot",
+  description: "The most advanced Discord bot with powerful moderation, music, and utility features.",
     generator: 'v0.app'
 }
 
@@ -24,9 +23,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <Navigation />
-          <main>{children}</main>
-          <Toaster />
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <main>{children}</main>
+            <Toaster />
+          </div>
         </Providers>
       </body>
     </html>
