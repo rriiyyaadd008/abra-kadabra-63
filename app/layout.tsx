@@ -9,8 +9,8 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz - Advanced Discord Bot",
-  description: "The most advanced Discord bot with 1.1K+ servers and 3.8M+ users",
+  title: "Astroz - Discord Bot",
+  description: "The ultimate Discord bot for your server",
     generator: 'v0.app'
 }
 

@@ -24,7 +24,7 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    domains: ["cdn.discordapp.com"],
+    domains: ["cdn.discordapp.com"], // Updated line
     unoptimized: true,
   },
   async headers() {

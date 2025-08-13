@@ -1,169 +1,236 @@
-"use client"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { MessageSquare, Mail, ExternalLink, Users, Clock, Shield } from "lucide-react"
+import Link from "next/link"
 
-import { useEffect, useState } from "react"
-import Navigation from "@/components/navigation"
-import { MessageCircle, Mail, ExternalLink } from "lucide-react"
-
-export default function Contact() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
+export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden pb-20">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
-            }}
-          />
-        ))}
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
+    <div className="container px-4 py-12 mx-auto">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h1 className="text-5xl font-bold mb-4">Get in Touch</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Have questions, need support, or want to share feedback? We're here to help! Choose the best way to reach our
+          team.
+        </p>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div
-            className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
-              Contact Us
-            </h1>
-            <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
-            <p className="text-xl text-gray-300 mt-6 max-w-2xl mx-auto">
-              Get in touch with the Astroz team for support, feedback, or collaboration
-            </p>
-          </div>
+      {/* Contact Methods */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader>
+            <MessageSquare className="h-12 w-12 text-blue-600 mb-4" />
+            <CardTitle>Discord Support</CardTitle>
+            <CardDescription>
+              Join our official Discord server for real-time support and community discussions.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Response Time</span>
+                <Badge variant="secondary">
+                  <Clock className="h-3 w-3 mr-1" />
+                  ~5 minutes
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Availability</span>
+                <Badge variant="outline">24/7</Badge>
+              </div>
+              <Button className="w-full" asChild>
+                <Link href="https://discord.gg/astroz" target="_blank" rel="noopener noreferrer">
+                  Join Discord <ExternalLink className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader>
+            <Mail className="h-12 w-12 text-green-600 mb-4" />
+            <CardTitle>Email Support</CardTitle>
+            <CardDescription>
+              Send us an email for detailed inquiries, bug reports, or business matters.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Response Time</span>
+                <Badge variant="secondary">
+                  <Clock className="h-3 w-3 mr-1" />
+                  ~24 hours
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Best For</span>
+                <Badge variant="outline">Detailed Issues</Badge>
+              </div>
+              <Button className="w-full bg-transparent" variant="outline" asChild>
+                <Link href="mailto:support@astroz.bot">
+                  Send Email <Mail className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader>
+            <Users className="h-12 w-12 text-purple-600 mb-4" />
+            <CardTitle>Community Forum</CardTitle>
+            <CardDescription>
+              Browse our community forum for guides, tips, and discussions with other users.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Type</span>
+                <Badge variant="secondary">Self-Help</Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-muted-foreground">Best For</span>
+                <Badge variant="outline">Learning</Badge>
+              </div>
+              <Button className="w-full bg-transparent" variant="outline" asChild>
+                <Link href="/forum">
+                  Visit Forum <ExternalLink className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* FAQ Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">How do I add Astroz to my server?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Simply click the "Add to Server" button on our homepage, select your server, and grant the necessary
+                permissions. Astroz will be ready to use immediately!
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Is Astroz free to use?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Yes! Astroz offers a comprehensive free tier with most features included. We also offer premium plans
+                with additional features for larger communities.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">What permissions does Astroz need?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Astroz requires standard bot permissions like reading messages, sending messages, and managing roles. We
+                only request permissions necessary for the features you want to use.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">How do I report a bug or issue?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                You can report bugs through our Discord server, email us directly, or use the feedback command in your
+                server. We take all reports seriously and respond quickly.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Can I suggest new features?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                We love hearing from our community. Join our Discord server and share your ideas in the suggestions
+                channel. Many current features came from user suggestions.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Is my server data safe with Astroz?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Yes, we take data privacy seriously. We only store necessary data for bot functionality and never share
+                your information with third parties. Check our privacy policy for details.
+              </p>
+            </CardContent>
+          </Card>
         </div>
+      </section>
 
-        {/* Contact Options */}
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Discord Support */}
-            <div
-              className={`transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            >
-              <div className="relative group h-full">
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
-
-                <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 h-full text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 mb-6 shadow-lg shadow-cyan-500/25">
-                    <MessageCircle className="w-8 h-8 text-white" />
-                  </div>
-
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">
-                    Discord Support
-                  </h3>
-                  <p className="text-gray-300 mb-6">
-                    Join our Discord server for real-time support, community discussions, and the latest updates.
-                  </p>
-
-                  <a
-                    href="https://discord.gg/TCHCDc5bhQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">Join Server</span>
-                    <ExternalLink className="w-4 h-4 relative z-10" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Direct Contact */}
-            <div
-              className={`transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            >
-              <div className="relative group h-full">
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
-
-                <div className="relative bg-slate-900/80 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 h-full text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 mb-6 shadow-lg shadow-purple-500/25">
-                    <Mail className="w-8 h-8 text-white" />
-                  </div>
-
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-                    Direct Contact
-                  </h3>
-                  <p className="text-gray-300 mb-6">
-                    Reach out directly to our team for business inquiries, partnerships, or technical support.
-                  </p>
-
-                  <div className="space-y-3 text-gray-300">
-                    <p className="text-sm">
-                      <span className="text-purple-400 font-semibold">Creator:</span> RIYAD
-                    </p>
-                    <p className="text-sm">
-                      <span className="text-purple-400 font-semibold">Response Time:</span> 24-48 hours
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Info */}
-          <div
-            className={`mt-12 transition-all duration-1000 delay-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
-
-              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 text-center">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                  Quick Actions
-                </h3>
-                <p className="text-gray-300 mb-6">
-                  Get started with Astroz right away or explore our comprehensive features
+      {/* Support Hours */}
+      <section className="mb-16">
+        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+          <CardHeader className="text-center">
+            <Shield className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+            <CardTitle className="text-2xl">24/7 Support Available</CardTitle>
+            <CardDescription className="text-lg">
+              Our community moderators and automated systems provide round-the-clock assistance
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <h3 className="font-semibold mb-2">Instant Help</h3>
+                <p className="text-sm text-muted-foreground">
+                  Use our help command in Discord for immediate assistance with common questions
                 </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="https://discord.com/oauth2/authorize?client_id=1350794455283925085&permissions=2113268958&scope=bot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 inline-flex items-center justify-center gap-2"
-                  >
-                    <span className="relative z-10">Invite Astroz</span>
-                  </a>
-
-                  <a
-                    href="/modules"
-                    className="group relative px-6 py-3 border-2 border-cyan-500/50 rounded-lg font-semibold text-cyan-400 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:text-white hover:shadow-lg hover:shadow-cyan-500/25 inline-flex items-center justify-center gap-2"
-                  >
-                    <span className="relative z-10">View Modules</span>
-                  </a>
-                </div>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Community Support</h3>
+                <p className="text-sm text-muted-foreground">
+                  Our active community members are always ready to help fellow users
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Developer Response</h3>
+                <p className="text-sm text-muted-foreground">
+                  Direct access to our development team for complex issues and feedback
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </CardContent>
+        </Card>
+      </section>
 
-      <Navigation />
+      {/* CTA */}
+      <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+        <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
+        <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Don't hesitate to reach out! Our friendly team is always happy to help.
+        </p>
+        <Button size="lg" variant="secondary" className="text-lg px-8 py-6" asChild>
+          <Link href="https://discord.gg/astroz" target="_blank" rel="noopener noreferrer">
+            Join Our Discord <MessageSquare className="ml-2 h-5 w-5" />
+          </Link>
+        </Button>
+      </div>
     </div>
   )
 }

@@ -1,123 +1,226 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Heart, Code, Users, Zap, ArrowRight } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
-import Navigation from "@/components/navigation"
 
-export default function About() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
+export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden pb-20">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
-            }}
-          />
-        ))}
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
+    <div className="container px-4 py-12 mx-auto">
+      {/* Hero Section */}
+      <div className="text-center mb-16">
+        <h1 className="text-5xl font-bold mb-4">About Astroz</h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Born from a passion for building better Discord communities, Astroz has grown into the ultimate bot trusted by
+          thousands of servers worldwide.
+        </p>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div
-            className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <div className="relative group inline-block mb-8">
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-              <div className="relative flex items-center justify-center">
-                <Image
-                  src="/astroz-logo.gif"
-                  alt="Astroz Dragon Logo"
-                  width={96}
-                  height={96}
-                  className="object-contain drop-shadow-2xl max-w-24 max-h-24"
-                  priority
-                  style={{
-                    objectFit: "contain",
-                    background: "transparent",
-                  }}
-                />
-              </div>
+      {/* Story Section */}
+      <section className="mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Astroz began as a simple moderation bot created by a small team of Discord enthusiasts who were
+                frustrated with the limitations of existing solutions. We wanted something more powerful, more
+                intuitive, and more reliable.
+              </p>
+              <p>
+                What started as a weekend project quickly grew into something much bigger. As we added features and
+                refined the user experience, word spread throughout the Discord community. Server owners loved the
+                comprehensive feature set and the attention to detail.
+              </p>
+              <p>
+                Today, Astroz serves over 1,100 servers and 3.8 million users, but we haven't forgotten our roots. We're
+                still the same passionate team, committed to making Discord communities better, one server at a time.
+              </p>
             </div>
-
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
-              About Astroz
-            </h1>
-            <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-purple-600 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
           </div>
-        </div>
-
-        {/* About Content */}
-        <div className="max-w-4xl mx-auto">
-          <div
-            className={`transition-all duration-1000 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
-
-              <div className="relative bg-slate-900/80 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 md:p-12">
-                <div className="space-y-6 text-gray-300 leading-relaxed">
-                  <p className="text-lg md:text-xl">
-                    <span className="text-cyan-400 font-semibold">Astroz</span> represents the pinnacle of Discord bot
-                    technology, crafted with precision and passion to deliver an unparalleled server management
-                    experience.
-                  </p>
-
-                  <p className="text-base md:text-lg">
-                    Born from the vision of creating a comprehensive solution for Discord communities, Astroz combines
-                    cutting-edge security features with intuitive user experience. Our bot is designed to grow with your
-                    community, adapting to your needs while maintaining the highest standards of performance and
-                    reliability.
-                  </p>
-
-                  <p className="text-base md:text-lg">
-                    What sets Astroz apart is our commitment to innovation and community feedback. Every feature is
-                    meticulously designed and tested to ensure it not only meets but exceeds the expectations of modern
-                    Discord server administrators and their communities.
-                  </p>
-
-                  <div className="pt-6">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                      Our Mission
-                    </h3>
-                    <p className="text-base md:text-lg">
-                      To empower Discord communities with the most advanced, secure, and user-friendly bot experience
-                      possible, fostering growth, engagement, and safety in every server we serve.
-                    </p>
-                  </div>
-                </div>
+          <div className="relative">
+            <Image
+              src="/creator-riyad.webp"
+              alt="Astroz Creator"
+              width={400}
+              height={400}
+              className="rounded-2xl shadow-2xl"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg">
+              <div className="flex items-center space-x-2">
+                <Heart className="h-5 w-5 text-red-500" />
+                <span className="font-semibold">Made with love</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <Navigation />
+      {/* Values Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Our Values</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <Card className="text-center">
+            <CardHeader>
+              <Users className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <CardTitle>Community First</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                Every feature we build is designed with community needs in mind. Your feedback drives our development.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="text-center">
+            <CardHeader>
+              <Zap className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
+              <CardTitle>Performance</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                We obsess over speed and reliability. Your bot should work flawlessly, every single time.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="text-center">
+            <CardHeader>
+              <Code className="h-12 w-12 text-green-600 mx-auto mb-4" />
+              <CardTitle>Innovation</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                We're constantly pushing boundaries, exploring new features and technologies to stay ahead.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="text-center">
+            <CardHeader>
+              <Heart className="h-12 w-12 text-red-600 mx-auto mb-4" />
+              <CardTitle>Passion</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">
+                We genuinely love what we do. This isn't just a project - it's our mission to improve Discord.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Meet the Team</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card>
+            <CardHeader className="text-center">
+              <Image
+                src="/creator-riyad.webp"
+                alt="Riyad - Founder & Lead Developer"
+                width={120}
+                height={120}
+                className="rounded-full mx-auto mb-4"
+              />
+              <CardTitle>Riyad</CardTitle>
+              <CardDescription>Founder & Lead Developer</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground mb-4">
+                The visionary behind Astroz, passionate about creating tools that bring communities together.
+              </p>
+              <div className="flex justify-center space-x-2">
+                <Badge variant="secondary">JavaScript</Badge>
+                <Badge variant="secondary">Node.js</Badge>
+                <Badge variant="secondary">Discord.js</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="text-center">
+              <div className="w-[120px] h-[120px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">MJ</span>
+              </div>
+              <CardTitle>MajesticOwner</CardTitle>
+              <CardDescription>Co-Developer & Community Manager</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground mb-4">
+                Ensures Astroz runs smoothly and helps build our amazing community of users.
+              </p>
+              <div className="flex justify-center space-x-2">
+                <Badge variant="secondary">Python</Badge>
+                <Badge variant="secondary">Community</Badge>
+                <Badge variant="secondary">Support</Badge>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="text-center">
+              <div className="w-[120px] h-[120px] bg-gradient-to-r from-green-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">AT</span>
+              </div>
+              <CardTitle>Astroz Team</CardTitle>
+              <CardDescription>Contributors & Beta Testers</CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground mb-4">
+                Our dedicated community of contributors who help test features and provide feedback.
+              </p>
+              <div className="flex justify-center space-x-2">
+                <Badge variant="secondary">Testing</Badge>
+                <Badge variant="secondary">Feedback</Badge>
+                <Badge variant="secondary">Ideas</Badge>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="mb-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-12">
+        <h2 className="text-3xl font-bold text-center mb-12">Astroz by the Numbers</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-blue-600 mb-2">1.1K+</div>
+            <div className="text-muted-foreground">Active Servers</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-purple-600 mb-2">3.8M+</div>
+            <div className="text-muted-foreground">Users Served</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-green-600 mb-2">99.9%</div>
+            <div className="text-muted-foreground">Uptime</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-red-600 mb-2">150+</div>
+            <div className="text-muted-foreground">Commands</div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+        <h2 className="text-3xl font-bold mb-4">Join the Astroz Family</h2>
+        <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Become part of our growing community and experience what makes Astroz special.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" variant="secondary" className="text-lg px-8 py-6" asChild>
+            <Link href="/dashboard">
+              Add to Server <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-lg px-8 py-6 bg-transparent border-white text-white hover:bg-white hover:text-blue-600"
+            asChild
+          >
+            <Link href="/contact">Get in Touch</Link>
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }
