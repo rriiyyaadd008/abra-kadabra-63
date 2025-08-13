@@ -3,29 +3,30 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
+import Navigation from "@/components/navigation"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz - Advanced Discord Bot",
+  title: "Astroz Bot - Advanced Discord Bot",
   description:
-    "The ultimate Discord bot for moderation, music, economy, and more. Join thousands of servers using Astroz!",
-  keywords: ["discord bot", "moderation", "music bot", "economy bot", "astroz"],
+    "The most advanced Discord bot featuring robust security, moderation, music, economy, and engagement tools.",
+  keywords: ["discord bot", "moderation", "music bot", "economy bot", "discord security"],
   authors: [{ name: "RIYAD" }],
   creator: "RIYAD",
-  publisher: "Astroz Development",
-  robots: "index, follow",
   openGraph: {
-    title: "Astroz - Advanced Discord Bot",
-    description: "The ultimate Discord bot for moderation, music, economy, and more.",
+    title: "Astroz Bot - Advanced Discord Bot",
+    description:
+      "The most advanced Discord bot featuring robust security, moderation, music, economy, and engagement tools.",
     url: "https://astroz-bot.vercel.app",
     siteName: "Astroz Bot",
     images: [
       {
-        url: "/dragon-logo.png",
+        url: "/astroz-logo.gif",
         width: 1200,
         height: 630,
-        alt: "Astroz Discord Bot",
+        alt: "Astroz Bot Logo",
       },
     ],
     locale: "en_US",
@@ -33,16 +34,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Astroz - Advanced Discord Bot",
-    description: "The ultimate Discord bot for moderation, music, economy, and more.",
-    images: ["/dragon-logo.png"],
+    title: "Astroz Bot - Advanced Discord Bot",
+    description:
+      "The most advanced Discord bot featuring robust security, moderation, music, economy, and engagement tools.",
+    images: ["/astroz-logo.gif"],
   },
-  icons: {
-    icon: "/dragon-logo.png",
-    shortcut: "/dragon-logo.png",
-    apple: "/dragon-logo.png",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  manifest: "/manifest.json",
     generator: 'v0.app'
 }
 
@@ -53,30 +60,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="generator" content="Astroz Development" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-            /* Hide v0 attribution elements */
-            [class*="v0"], [id*="v0"], [data-v0], 
-            [class*="attribution"], [id*="attribution"],
-            [href*="v0.dev"], [href*="chat"], 
-            iframe[src*="v0"], div[class*="modal"][class*="v0"] {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-              position: absolute !important;
-              left: -9999px !important;
-              width: 0 !important;
-              height: 0 !important;
-            }
-          `,
-          }}
-        />
-      </head>
-      <body className={inter.className} suppressHydrationWarning>
-        <Providers>{children}</Providers>
+      <body className={inter.className}>
+        <Providers>
+          <Navigation />
+          <main>{children}</main>
+          <Toaster />
+        </Providers>
       </body>
     </html>
   )

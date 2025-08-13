@@ -4,11 +4,11 @@ import DiscordProvider from "next-auth/providers/discord"
 export const authOptions: NextAuthOptions = {
   providers: [
     DiscordProvider({
-      clientId: process.env.DISCORD_CLIENT_ID || "1294043496843444256",
-      clientSecret: process.env.DISCORD_CLIENT_SECRET || "-M9muPaktEbjPVUeRUwD2SqKJxfNJcwD",
+      clientId: process.env.DISCORD_CLIENT_ID!,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
       authorization: {
         params: {
-          scope: "identify guilds guilds.join",
+          scope: "identify email guilds",
         },
       },
     }),
@@ -18,14 +18,14 @@ export const authOptions: NextAuthOptions = {
       if (account && profile) {
         token.accessToken = account.access_token
         token.discordId = profile.id
-        token.username = profile.username
-        token.discriminator = profile.discriminator
-        token.avatar = profile.avatar
+        token.username = (profile as any).username
+        token.discriminator = (profile as any).discriminator
+        token.avatar = (profile as any).avatar
       }
       return token
     },
     async session({ session, token }) {
-      if (token) {
+      if (token && session.user) {
         session.accessToken = token.accessToken as string
         session.user.id = token.discordId as string
         session.user.username = token.username as string
@@ -37,6 +37,10 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/auth/signin",
+    error: "/auth/error",
   },
-  secret: process.env.NEXTAUTH_SECRET || "your-secret-key-here",
+  session: {
+    strategy: "jwt",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 }

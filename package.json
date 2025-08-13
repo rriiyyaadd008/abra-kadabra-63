@@ -11,7 +11,6 @@
   "dependencies": {
     "@auth/core": "latest",
     "@hookform/resolvers": "^3.3.4",
-    "@next/font": "^14.1.0",
     "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "latest",
     "@radix-ui/react-aspect-ratio": "latest",
@@ -45,7 +44,6 @@
     "clsx": "^2.1.1",
     "cmdk": "latest",
     "embla-carousel-react": "latest",
-    "framer-motion": "^11.0.8",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
     "next": "14.2.16",

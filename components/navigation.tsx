@@ -1,80 +1,80 @@
 "use client"
 
-import { useState } from "react"
+import type React from "react"
+
 import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Home, Grid3X3, Star, Zap, Info, MessageCircle, Shield, FileText, LayoutDashboard } from "lucide-react"
+import { memo } from "react"
 import { AuthButton } from "@/components/auth-button"
 
-export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+interface NavItem {
+  href: string
+  label: string
+  icon: React.ComponentType<{ className?: string }>
+}
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+const navItems: NavItem[] = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/modules", label: "Main Modules", icon: Grid3X3 },
+  { href: "/extra-modules", label: "Extra Modules", icon: Star },
+  { href: "/features", label: "Features", icon: Zap },
+  { href: "/about", label: "About", icon: Info },
+  { href: "/contact", label: "Contact", icon: MessageCircle },
+  { href: "/privacy", label: "Privacy", icon: Shield },
+  { href: "/terms", label: "Terms", icon: FileText },
+  { href: "/auth/signin", label: "Dashboard", icon: LayoutDashboard },
+]
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/features", label: "Features" },
-    { href: "/modules", label: "Modules" },
-    { href: "/extra-modules", label: "Extra Modules" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ]
+function Navigation() {
+  const pathname = usePathname()
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-blue-500/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/astroz-logo.gif" alt="Astroz Logo" width={40} height={40} className="rounded-lg" />
-            <span className="text-xl font-bold text-white">Astroz</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* Auth Button and Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <AuthButton />
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button variant="ghost" size="sm" onClick={toggleMenu} className="text-white hover:text-blue-400">
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
-          </div>
+    <>
+      {/* Top Auth Bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-cyan-500/20">
+        <div className="flex justify-end items-center px-4 py-2">
+          <AuthButton />
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95 backdrop-blur-md rounded-lg mt-2">
-              {navItems.map((item) => (
+      {/* Bottom Navigation */}
+      <nav
+        className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-t border-cyan-500/20"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="flex justify-center items-center px-2 py-3">
+          <div className="flex gap-1 bg-slate-800/50 rounded-full p-2 border border-cyan-500/30 overflow-x-auto max-w-full">
+            {navItems.map((item) => {
+              const IconComponent = item.icon
+              const isActive = pathname === item.href
+
+              return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  className={`group relative px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-1 text-xs whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${
+                    isActive
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25"
+                      : "text-gray-400 hover:text-cyan-400 hover:bg-slate-700/50"
+                  }`}
+                  aria-current={isActive ? "page" : undefined}
                 >
-                  {item.label}
+                  <IconComponent className="w-4 h-4 flex-shrink-0" />
+                  <span className="font-medium hidden sm:inline">{item.label}</span>
+
+                  {isActive && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300" />
+                  )}
                 </Link>
-              ))}
-            </div>
+              )
+            })}
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </>
   )
 }
+
+export default memo(Navigation)

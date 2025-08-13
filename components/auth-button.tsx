@@ -38,7 +38,9 @@ export function AuthButton() {
           <div className="flex items-center justify-start gap-2 p-2">
             <div className="flex flex-col space-y-1 leading-none">
               <p className="font-medium">{session.user.username}</p>
-              <p className="w-[200px] truncate text-sm text-muted-foreground">{session.user.email}</p>
+              <p className="w-[200px] truncate text-sm text-muted-foreground">
+                {session.user.email || `${session.user.username}#${session.user.discriminator}`}
+              </p>
             </div>
           </div>
           <DropdownMenuItem
