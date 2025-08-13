@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import AuthButton from "./auth-button"
-import ThemeToggle from "./theme-toggle"
+import { ThemeToggle } from "./theme-toggle"
 import Image from "next/image"
 
 const navigation = [
@@ -56,7 +56,7 @@ export default function Navigation() {
                 href={item.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.href ? "text-foreground" : "text-muted-foreground",
+                  pathname === item.href ? "text-foreground" : "text-foreground/60",
                 )}
               >
                 {item.name}
@@ -76,14 +76,14 @@ export default function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
-              <div className="flex flex-col space-y-4 mt-4">
+              <div className="flex flex-col space-y-3">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     className={cn(
                       "text-sm font-medium transition-colors hover:text-primary",
-                      pathname === item.href ? "text-foreground" : "text-muted-foreground",
+                      pathname === item.href ? "text-foreground" : "text-foreground/60",
                     )}
                   >
                     {item.name}
