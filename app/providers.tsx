@@ -1,17 +1,17 @@
 "use client"
 
-import type { ReactNode } from "react"
-import { Suspense } from "react"
+import type React from "react"
 import { SessionProvider } from "next-auth/react"
+import { ErrorBoundary } from "@/components/error-boundary"
+import Navigation from "@/components/navigation"
 
-interface ProvidersProps {
-  children: ReactNode
-}
-
-export function Providers({ children }: ProvidersProps) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
-      <Suspense fallback={null}>{children}</Suspense>
+      <ErrorBoundary>
+        <Navigation />
+        {children}
+      </ErrorBoundary>
     </SessionProvider>
   )
 }

@@ -1,78 +1,49 @@
 import type React from "react"
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
-import { Suspense } from "react"
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: {
-    default: "Astroz - Advanced Discord Bot",
-    template: "%s | Astroz",
-  },
+  title: "Astroz - Advanced Discord Bot",
   description:
-    "Elevate your Discord server with Astroz - the most advanced bot featuring robust security, moderation, and engagement tools.",
-  keywords: ["discord bot", "server management", "moderation", "antinuke", "discord security", "server bot"],
-  authors: [{ name: "RIYAD", url: "https://discord.gg/TCHCDc5bhQ" }],
+    "The ultimate Discord bot for moderation, music, economy, and more. Join thousands of servers using Astroz!",
+  keywords: ["discord bot", "moderation", "music bot", "economy bot", "astroz"],
+  authors: [{ name: "RIYAD" }],
   creator: "RIYAD",
   publisher: "Astroz Development",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  robots: "index, follow",
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://astroz.dev",
     title: "Astroz - Advanced Discord Bot",
-    description: "Elevate your Discord server with cutting-edge features and robust security.",
-    siteName: "Astroz",
+    description: "The ultimate Discord bot for moderation, music, economy, and more.",
+    url: "https://astroz-bot.vercel.app",
+    siteName: "Astroz Bot",
     images: [
       {
-        url: "/astroz-logo.gif",
+        url: "/dragon-logo.png",
         width: 1200,
         height: 630,
-        alt: "Astroz Dragon Logo",
+        alt: "Astroz Discord Bot",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Astroz - Advanced Discord Bot",
-    description: "Elevate your Discord server with cutting-edge features and robust security.",
-    images: ["/astroz-logo.gif"],
+    description: "The ultimate Discord bot for moderation, music, economy, and more.",
+    images: ["/dragon-logo.png"],
   },
   icons: {
-    icon: "/astroz-logo.gif",
-    shortcut: "/astroz-logo.gif",
-    apple: "/astroz-logo.gif",
+    icon: "/dragon-logo.png",
+    shortcut: "/dragon-logo.png",
+    apple: "/dragon-logo.png",
   },
   manifest: "/manifest.json",
-  generator: "Astroz Development",
-}
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0ea5e9" },
-    { media: "(prefers-color-scheme: dark)", color: "#0ea5e9" },
-  ],
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -81,18 +52,31 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="generator" content="Astroz Development" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            /* Hide v0 attribution elements */
+            [class*="v0"], [id*="v0"], [data-v0], 
+            [class*="attribution"], [id*="attribution"],
+            [href*="v0.dev"], [href*="chat"], 
+            iframe[src*="v0"], div[class*="modal"][class*="v0"] {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              position: absolute !important;
+              left: -9999px !important;
+              width: 0 !important;
+              height: 0 !important;
+            }
+          `,
+          }}
+        />
       </head>
-      <body
-        className={`${inter.className} antialiased min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900`}
-      >
-        <Suspense
-          fallback={<div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />}
-        >
-          <Providers>{children}</Providers>
-        </Suspense>
+      <body className={inter.className} suppressHydrationWarning>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

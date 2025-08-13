@@ -1,42 +1,42 @@
 import type { NextAuthOptions } from "next-auth"
 import DiscordProvider from "next-auth/providers/discord"
-import CredentialsProvider from "next-auth/providers/credentials"
-
-const discordId = process.env.DISCORD_CLIENT_ID
-const discordSecret = process.env.DISCORD_CLIENT_SECRET
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    ...(discordId && discordSecret
-      ? [
-          DiscordProvider({
-            clientId: discordId,
-            clientSecret: discordSecret,
-            authorization: { params: { scope: "identify guilds" } },
-          }),
-        ]
-      : []),
-    CredentialsProvider({
-      name: "dummy",
-      credentials: {},
-      authorize() {
-        // Dummy provider so NextAuth initializes when Discord vars are absent.
-        return null
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID || "1294043496843444256",
+      clientSecret: process.env.DISCORD_CLIENT_SECRET || "-M9muPaktEbjPVUeRUwD2SqKJxfNJcwD",
+      authorization: {
+        params: {
+          scope: "identify guilds guilds.join",
+        },
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET || "CHANGE_ME_IN_PROD",
-  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
   callbacks: {
-    async jwt({ token, account }) {
-      if (account?.access_token) token.accessToken = account.access_token
+    async jwt({ token, account, profile }) {
+      if (account && profile) {
+        token.accessToken = account.access_token
+        token.discordId = profile.id
+        token.username = profile.username
+        token.discriminator = profile.discriminator
+        token.avatar = profile.avatar
+      }
       return token
     },
     async session({ session, token }) {
-      if (token.accessToken) session.accessToken = token.accessToken as string
+      if (token) {
+        session.accessToken = token.accessToken as string
+        session.user.id = token.discordId as string
+        session.user.username = token.username as string
+        session.user.discriminator = token.discriminator as string
+        session.user.avatar = token.avatar as string
+      }
       return session
     },
   },
-  pages: { signIn: "/auth/signin", error: "/auth/error" },
-  debug: process.env.NODE_ENV === "development",
+  pages: {
+    signIn: "/auth/signin",
+  },
+  secret: process.env.NEXTAUTH_SECRET || "your-secret-key-here",
 }
