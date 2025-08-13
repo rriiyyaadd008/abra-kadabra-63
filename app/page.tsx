@@ -97,8 +97,8 @@ export default function HomePage() {
   ]
 
   const stats = [
-    { label: "Active Servers", value: "10K+", icon: Users },
-    { label: "Happy Users", value: "500K+", icon: Star },
+    { label: "Active Servers", value: "1.1K+", icon: Users },
+    { label: "Happy Users", value: "3.8M+", icon: Star },
     { label: "Uptime", value: "99.9%", icon: Clock },
     { label: "Support", value: "24/7", icon: Headphones },
   ]

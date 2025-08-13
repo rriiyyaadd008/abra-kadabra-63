@@ -1,80 +1,100 @@
 "use client"
 
-import type React from "react"
-
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Grid3X3, Star, Zap, Info, MessageCircle, Shield, FileText, LayoutDashboard } from "lucide-react"
-import { memo } from "react"
-import { AuthButton } from "@/components/auth-button"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu, Home, Package, Zap, Info, Mail, Shield, FileText, BarChart3 } from "lucide-react"
+import { cn } from "@/lib/utils"
+import AuthButton from "./auth-button"
+import ThemeToggle from "./theme-toggle"
 
-interface NavItem {
-  href: string
-  label: string
-  icon: React.ComponentType<{ className?: string }>
-}
-
-const navItems: NavItem[] = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/modules", label: "Main Modules", icon: Grid3X3 },
-  { href: "/extra-modules", label: "Extra Modules", icon: Star },
-  { href: "/features", label: "Features", icon: Zap },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/contact", label: "Contact", icon: MessageCircle },
-  { href: "/privacy", label: "Privacy", icon: Shield },
-  { href: "/terms", label: "Terms", icon: FileText },
-  { href: "/auth/signin", label: "Dashboard", icon: LayoutDashboard },
+const navigation = [
+  { name: "Home", href: "/", icon: Home },
+  { name: "Modules", href: "/modules", icon: Package },
+  { name: "Extra Modules", href: "/extra-modules", icon: Zap },
+  { name: "Features", href: "/features", icon: Info },
+  { name: "About", href: "/about", icon: Info },
+  { name: "Contact", href: "/contact", icon: Mail },
+  { name: "Privacy", href: "/privacy", icon: Shield },
+  { name: "Terms", href: "/terms", icon: FileText },
+  { name: "Dashboard", href: "/dashboard", icon: BarChart3 },
 ]
 
-function Navigation() {
+export default function Navigation() {
+  const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
   return (
     <>
       {/* Top Auth Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-cyan-500/20">
-        <div className="flex justify-end items-center px-4 py-2">
-          <AuthButton />
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+        <div className="container mx-auto px-4 h-14 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-64">
+                <nav className="flex flex-col space-y-2 mt-6">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                        pathname === item.href
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                      )}
+                    >
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.name}</span>
+                    </Link>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+            <Link
+              href="/"
+              className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            >
+              Astroz
+            </Link>
+          </div>
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
+            <AuthButton />
+          </div>
         </div>
       </div>
 
       {/* Bottom Navigation */}
-      <nav
-        className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-t border-cyan-500/20"
-        role="navigation"
-        aria-label="Main navigation"
-      >
-        <div className="flex justify-center items-center px-2 py-3">
-          <div className="flex gap-1 bg-slate-800/50 rounded-full p-2 border border-cyan-500/30 overflow-x-auto max-w-full">
-            {navItems.map((item) => {
-              const IconComponent = item.icon
-              const isActive = pathname === item.href
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`group relative px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-1 text-xs whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${
-                    isActive
-                      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25"
-                      : "text-gray-400 hover:text-cyan-400 hover:bg-slate-700/50"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  <IconComponent className="w-4 h-4 flex-shrink-0" />
-                  <span className="font-medium hidden sm:inline">{item.label}</span>
-
-                  {isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300" />
-                  )}
-                </Link>
-              )
-            })}
-          </div>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-t">
+        <div className="container mx-auto px-4">
+          <nav className="flex items-center justify-center space-x-1 py-2 overflow-x-auto">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "flex flex-col items-center space-y-1 px-3 py-2 rounded-md text-xs font-medium transition-colors min-w-0 flex-shrink-0",
+                  pathname === item.href
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                )}
+              >
+                <item.icon className="h-4 w-4" />
+                <span className="truncate">{item.name}</span>
+              </Link>
+            ))}
+          </nav>
         </div>
-      </nav>
+      </div>
     </>
   )
 }
-
-export default memo(Navigation)
