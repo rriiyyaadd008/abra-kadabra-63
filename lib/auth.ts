@@ -5,7 +5,7 @@ export const authOptions: NextAuthOptions = {
   providers: [
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID || "1234567890123456789",
-      clientSecret: process.env.DISCORD_CLIENT_SECRET || "your-discord-client-secret",
+      clientSecret: process.env.DISCORD_CLIENT_SECRET || "abcdefghijklmnopqrstuvwxyz123456",
     }),
   ],
   session: {

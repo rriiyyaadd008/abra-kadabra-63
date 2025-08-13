@@ -1,287 +1,311 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import {
   Shield,
   Music,
-  Gamepad2,
-  Users,
   Zap,
+  Users,
+  Star,
+  TrendingUp,
+  MessageSquare,
+  Gift,
+  Clock,
+  Lock,
   Bot,
   Settings,
-  MessageSquare,
-  Trophy,
-  Calendar,
-  Lock,
   BarChart3,
-  Webhook,
-  ArrowRight,
+  Headphones,
+  UserCheck,
+  AlertTriangle,
+  Crown,
+  Gamepad2,
 } from "lucide-react"
+import Link from "next/link"
 
 const featureCategories = [
   {
     title: "Moderation & Security",
     description: "Keep your server safe and organized",
     icon: Shield,
-    color: "from-red-500 to-orange-500",
+    color: "text-blue-600",
     features: [
       {
         name: "Auto Moderation",
         description: "Automatically detect and handle spam, inappropriate content, and rule violations",
         icon: Shield,
+        premium: false,
       },
       {
-        name: "Custom Filters",
-        description: "Create custom word filters and automod rules tailored to your community",
-        icon: Lock,
+        name: "Custom Word Filters",
+        description: "Create custom filters for words, phrases, and patterns with customizable actions",
+        icon: AlertTriangle,
+        premium: false,
       },
       {
-        name: "Detailed Logging",
-        description: "Comprehensive audit logs for all moderation actions and server events",
+        name: "Advanced Logging",
+        description: "Comprehensive audit logs for all server activities and moderation actions",
         icon: BarChart3,
+        premium: true,
+      },
+      {
+        name: "Raid Protection",
+        description: "Protect against server raids with intelligent detection and automatic responses",
+        icon: Lock,
+        premium: true,
       },
       {
         name: "Role Management",
-        description: "Advanced role assignment and permission management tools",
-        icon: Users,
+        description: "Automated role assignment, reaction roles, and permission management",
+        icon: UserCheck,
+        premium: false,
+      },
+      {
+        name: "Temporary Actions",
+        description: "Temporary bans, mutes, and restrictions with automatic expiration",
+        icon: Clock,
+        premium: false,
       },
     ],
   },
   {
     title: "Music & Entertainment",
-    description: "High-quality audio and fun activities",
+    description: "High-quality music and fun features",
     icon: Music,
-    color: "from-purple-500 to-pink-500",
+    color: "text-purple-600",
     features: [
       {
-        name: "Multi-Platform Music",
-        description: "Play music from YouTube, Spotify, SoundCloud, and more platforms",
+        name: "High-Quality Music",
+        description: "Crystal-clear audio from YouTube, Spotify, SoundCloud, and more",
+        icon: Headphones,
+        premium: false,
+      },
+      {
+        name: "Advanced Queue System",
+        description: "Queue management, shuffle, repeat, and playlist support",
         icon: Music,
+        premium: false,
       },
       {
-        name: "Queue Management",
-        description: "Advanced queue system with shuffle, repeat, and playlist support",
-        icon: Settings,
-      },
-      {
-        name: "Mini Games",
-        description: "Engage your community with trivia, word games, and interactive activities",
-        icon: Gamepad2,
+        name: "24/7 Music Mode",
+        description: "Keep music playing even when no one is in the voice channel",
+        icon: Clock,
+        premium: true,
       },
       {
         name: "Custom Playlists",
         description: "Create and save custom playlists for your server",
-        icon: Trophy,
+        icon: Star,
+        premium: true,
+      },
+      {
+        name: "Music Filters",
+        description: "Apply audio filters like bass boost, nightcore, and more",
+        icon: Settings,
+        premium: true,
+      },
+      {
+        name: "Games & Fun",
+        description: "Mini-games, trivia, and entertainment commands for your community",
+        icon: Gamepad2,
+        premium: false,
       },
     ],
   },
   {
-    title: "Community Tools",
+    title: "Community Engagement",
     description: "Build and grow your community",
     icon: Users,
-    color: "from-blue-500 to-cyan-500",
+    color: "text-green-600",
     features: [
       {
-        name: "Level System",
-        description: "Reward active members with XP, levels, and custom role rewards",
-        icon: Trophy,
+        name: "Welcome System",
+        description: "Customizable welcome messages, images, and auto-role assignment",
+        icon: Users,
+        premium: false,
       },
       {
-        name: "Welcome Messages",
-        description: "Customizable welcome messages and member screening",
+        name: "Giveaway System",
+        description: "Host giveaways with multiple winners, requirements, and automatic selection",
+        icon: Gift,
+        premium: false,
+      },
+      {
+        name: "Polls & Voting",
+        description: "Create polls with multiple options and real-time results",
         icon: MessageSquare,
+        premium: false,
       },
       {
-        name: "Event Management",
-        description: "Create and manage server events with RSVP functionality",
-        icon: Calendar,
+        name: "Level System",
+        description: "XP and leveling system with customizable rewards and leaderboards",
+        icon: TrendingUp,
+        premium: true,
       },
       {
         name: "Custom Commands",
-        description: "Create custom commands and autoresponders for your server",
+        description: "Create custom commands with variables, conditions, and actions",
         icon: Bot,
+        premium: true,
+      },
+      {
+        name: "Server Analytics",
+        description: "Detailed insights into member activity, growth, and engagement",
+        icon: BarChart3,
+        premium: true,
       },
     ],
   },
   {
-    title: "Utility & Automation",
-    description: "Streamline server management",
+    title: "Utility & Tools",
+    description: "Helpful tools for server management",
     icon: Zap,
-    color: "from-green-500 to-emerald-500",
+    color: "text-yellow-600",
     features: [
       {
-        name: "Reaction Roles",
-        description: "Let members assign roles to themselves using reactions",
+        name: "Server Information",
+        description: "Detailed server stats, member info, and role information",
         icon: Settings,
+        premium: false,
       },
       {
-        name: "Auto Roles",
-        description: "Automatically assign roles to new members based on criteria",
-        icon: Users,
+        name: "Reminder System",
+        description: "Set reminders for yourself or your server members",
+        icon: Clock,
+        premium: false,
       },
       {
-        name: "Webhooks",
-        description: "Integration with external services and custom webhooks",
-        icon: Webhook,
+        name: "Ticket System",
+        description: "Professional support ticket system with categories and transcripts",
+        icon: MessageSquare,
+        premium: true,
       },
       {
-        name: "Server Stats",
-        description: "Real-time server statistics and member analytics",
-        icon: BarChart3,
+        name: "Backup & Restore",
+        description: "Backup your server settings and restore them when needed",
+        icon: Shield,
+        premium: true,
+      },
+      {
+        name: "Multi-Language",
+        description: "Support for multiple languages with automatic detection",
+        icon: Bot,
+        premium: false,
+      },
+      {
+        name: "API Integration",
+        description: "Connect with external services and APIs for enhanced functionality",
+        icon: Zap,
+        premium: true,
       },
     ],
   },
 ]
 
-const highlights = [
-  {
-    title: "99.9% Uptime",
-    description: "Reliable service you can count on",
-    icon: Zap,
-  },
-  {
-    title: "24/7 Support",
-    description: "Get help whenever you need it",
-    icon: MessageSquare,
-  },
-  {
-    title: "Regular Updates",
-    description: "New features and improvements monthly",
-    icon: Settings,
-  },
-  {
-    title: "Easy Setup",
-    description: "Get started in under 5 minutes",
-    icon: Bot,
-  },
+const stats = [
+  { label: "Active Servers", value: "1.1K+", color: "text-blue-600" },
+  { label: "Happy Users", value: "3.8M+", color: "text-purple-600" },
+  { label: "Commands Available", value: "200+", color: "text-green-600" },
+  { label: "Uptime", value: "99.9%", color: "text-yellow-600" },
 ]
 
 export default function FeaturesPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-4">
-              🎯 Complete Feature Set
-            </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">Everything Your Discord Server Needs</h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Discover all the powerful features that make Astroz the perfect Discord bot for communities of all sizes.
-              From moderation to entertainment, we've got you covered.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8" asChild>
-                <Link href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot%20applications.commands">
-                  <Bot className="mr-2 h-5 w-5" />
-                  Add to Discord
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent" asChild>
-                <Link href="/dashboard">
-                  View Dashboard
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+    <div className="container mx-auto py-8 px-4">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
+          Powerful Features
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          Discover all the amazing features that make Astroz the perfect Discord bot for your server. From advanced
+          moderation to high-quality music, we've got everything you need.
+        </p>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">
+            <Link href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot">
+              Add to Server
+            </Link>
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/dashboard">View Dashboard</Link>
+          </Button>
+        </div>
+      </div>
 
       {/* Feature Categories */}
-      <section className="py-20">
-        <div className="container">
-          <div className="space-y-20">
-            {featureCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="space-y-8">
-                <div className="text-center">
-                  <div
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} mb-4`}
-                  >
-                    <category.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-4">{category.title}</h2>
-                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{category.description}</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {category.features.map((feature, featureIndex) => (
-                    <Card key={featureIndex} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-                      <CardHeader>
-                        <div className="flex items-center space-x-4">
-                          <div
-                            className={`w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center`}
-                          >
-                            <feature.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <div>
-                            <CardTitle className="text-xl">{feature.name}</CardTitle>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <CardDescription className="text-base">{feature.description}</CardDescription>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+      <div className="space-y-16">
+        {featureCategories.map((category, categoryIndex) => (
+          <div key={categoryIndex} className="space-y-8">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-4">
+                <category.icon className={`h-12 w-12 ${category.color}`} />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <h2 className="text-3xl font-bold mb-2">{category.title}</h2>
+              <p className="text-lg text-muted-foreground">{category.description}</p>
+            </div>
 
-      {/* Highlights Section */}
-      <section className="py-20 bg-muted/50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Why Choose Astroz?</h2>
-            <p className="text-xl text-muted-foreground">
-              Built with reliability, performance, and user experience in mind
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {highlights.map((highlight, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg">
-                <CardContent className="pt-8">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
-                    <highlight.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{highlight.title}</h3>
-                  <p className="text-muted-foreground">{highlight.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Join 1.1K+ servers and 3.8M+ users who trust Astroz to power their Discord communities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8" asChild>
-                <Link href="https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=8&scope=bot%20applications.commands">
-                  <Bot className="mr-2 h-5 w-5" />
-                  Invite Astroz Now
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent" asChild>
-                <Link href="/contact">
-                  Get Support
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {category.features.map((feature, featureIndex) => (
+                <Card key={featureIndex} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <feature.icon className={`h-8 w-8 ${category.color}`} />
+                      {feature.premium && (
+                        <Badge
+                          variant="secondary"
+                          className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white"
+                        >
+                          <Crown className="h-3 w-3 mr-1" />
+                          Premium
+                        </Badge>
+                      )}
+                    </div>
+                    <CardTitle className="text-lg">{feature.name}</CardTitle>
+                    <CardDescription>{feature.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+      {/* Premium CTA */}
+      <div className="mt-20 text-center">
+        <Card className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-800">
+          <CardContent className="pt-8">
+            <Crown className="h-16 w-16 text-yellow-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold mb-4">Unlock Premium Features</h3>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Get access to advanced features like 24/7 music, custom commands, detailed analytics, and priority
+              support. Upgrade to Premium and take your server to the next level.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
+              >
+                Upgrade to Premium
+              </Button>
+              <Button size="lg" variant="outline">
+                Learn More
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }

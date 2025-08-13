@@ -6,11 +6,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { LogOut, User } from "lucide-react"
 
-export default function AuthButton() {
+export function AuthButton() {
   const { data: session, status } = useSession()
 
   if (status === "loading") {
-    return <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+    return (
+      <Button variant="ghost" size="sm" disabled>
+        Loading...
+      </Button>
+    )
   }
 
   if (session?.user) {
@@ -31,12 +35,12 @@ export default function AuthButton() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
-          <div className="flex items-center justify-start gap-2 p-2">
-            <div className="flex flex-col space-y-1 leading-none">
-              <p className="font-medium">{session.user.name}</p>
-              <p className="w-[200px] truncate text-sm text-muted-foreground">{session.user.email}</p>
+          <DropdownMenuItem className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">{session.user.name}</p>
+              <p className="text-xs leading-none text-muted-foreground">{session.user.email}</p>
             </div>
-          </div>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => signOut()}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
@@ -47,7 +51,12 @@ export default function AuthButton() {
   }
 
   return (
-    <Button onClick={() => signIn("discord")} className="bg-[#5865F2] hover:bg-[#4752C4] text-white">
+    <Button
+      variant="outline"
+      size="sm"
+      onClick={() => signIn("discord")}
+      className="bg-[#5865F2] hover:bg-[#4752C4] text-white border-[#5865F2]"
+    >
       Login with Discord
     </Button>
   )

@@ -9,13 +9,13 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Astroz - Advanced Discord Bot",
-  description: "The most advanced Discord bot with moderation, music, games, and more features.",
-  keywords: ["discord bot", "moderation", "music", "games", "astroz"],
+  title: "Astroz Bot - Advanced Discord Bot",
+  description: "Astroz is a powerful Discord bot with moderation, music, and utility features for your server.",
+  keywords: ["discord bot", "moderation", "music", "utility", "astroz"],
   authors: [{ name: "Astroz Team" }],
   openGraph: {
-    title: "Astroz - Advanced Discord Bot",
-    description: "The most advanced Discord bot with moderation, music, games, and more features.",
+    title: "Astroz Bot - Advanced Discord Bot",
+    description: "Astroz is a powerful Discord bot with moderation, music, and utility features for your server.",
     type: "website",
   },
     generator: 'v0.app'
@@ -30,11 +30,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <div className="relative flex min-h-screen flex-col">
+          <div className="min-h-screen bg-background">
             <Navigation />
-            <main className="flex-1">{children}</main>
+            <main>{children}</main>
+            <Toaster />
           </div>
-          <Toaster />
         </Providers>
       </body>
     </html>
